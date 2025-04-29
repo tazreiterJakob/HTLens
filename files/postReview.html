@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beitrag</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="bg-gray-100 flex justify-center">
+
+<!-- Navbar -->
+<div class="navbar fixed bg-base-100 shadow-sm z-50 top-0 left-0 w-full">
+  <div class="navbar-start">
+      <div class="dropdown">
+          <label tabindex="0" class="btn btn-ghost lg:hidden">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M3 5h14a1 1 0 010 2H3a1 1 0 010-2zm0 4h14a1 1 0 010 2H3a1 1 0 010-2zm0 4h14a1 1 0 010 2H3a1 1 0 010-2z" clip-rule="evenodd" />
+              </svg>
+          </label>
+          <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+              <li><a class="font-bold" href="index.html">Home</a></li>
+              <li><a href="create.html">Erstellen</a></li>
+              <li><a>Suche</a></li>
+              <li><a>Hilfe</a></li>
+          </ul>
+      </div>
+      <a class="btn btn-ghost text-xl">HTLens</a>
+  </div>
+
+  <div class="navbar-center hidden lg:flex mt-6">
+      <ul class="menu menu-horizontal px-1">
+        <li><a class="font-bold" href="index.html">Home</a></li>
+        <li><a href="create.html">Erstellen</a></li>
+        <li><a>Suche</a></li>
+        <li><a>Hilfe</a></li>
+      </ul>
+  </div>
+
+  <div class="navbar-end">
+      <a class="btn">Profil</a>
+  </div>
+</div>
+
+<!-- Post Section -->
+<article id="currentPost" class="mt-10 pt-20 flex justify-center rounded-xl px-4">
+    <a class="btn link link-primary mr-4 self-start" href="index.html">
+      <img class="h-6 w-6" src="left-arrow.svg" alt="Zurück">
+    </a>
+  
+    <section class="card bg-white shadow-lg text-justify flex flex-col lg:flex-row max-w-6xl w-full p-4">
+        <figure class="w-full lg:w-1/2 relative">
+            <img class="h-full w-full object-cover rounded-xl" 
+                src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" 
+                alt="Bild" />
+            <a class="btn absolute bottom-2 right-2" href="resize.svg">
+                <img class="h-5" src="resize.svg" />
+            </a>
+        </figure>
+
+        <div class="w-full lg:w-1/2 p-4 flex flex-col">
+            <h2 id="postName" class="card-title">[Beitragsname]</h2>
+            <p id="postDescription" class="mb-4">
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy.
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+            </p>
+
+            <h2 class="font-bold">Tags</h2>
+            <div id="tags" class="flex flex-row flex-wrap gap-2 mt-2 mb-4">
+                <div class="badge flex badge-info items-center">
+                    <img class="h-5" src="hashtag.svg">
+                    wispowo
+                </div>
+                <div class="badge badge-info flex items-center">
+                    <img class="h-5" src="hashtag.svg">
+                    schule
+                </div>
+                <div class="badge badge-info flex items-center">
+                    <img class="h-5" src="hashtag.svg">
+                    sport
+                </div>
+                <div class="badge badge-info flex items-center">
+                    <img class="h-5" src="hashtag.svg">
+                    fun
+                </div>
+                <div class="badge badge-info flex items-center">
+                    <img class="h-5" src="hashtag.svg">
+                    auszeit
+                </div>
+                <div class="badge badge-info flex items-center">
+                    <img class="h-5" src="hashtag.svg">
+                    ski
+                </div>
+                <div class="badge badge-info flex items-center">
+                    <img class="h-5" src="hashtag.svg">
+                    snowboard
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <h2 class="font-bold">veröffentlicht am</h2>
+                <div>10.04.2025</div>
+            </div>
+
+            <div class="flex-grow"></div>
+            
+            <div class="flex justify-between items-center">
+              <div class="flex items-center">
+                <div class="avatar mr-2">
+                  <div class="w-10 h-10 rounded-full">
+                    <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                  </div>
+                </div>
+                <a href="#" class="hover:underline text-sm font-medium text-gray-700">user82240</a>
+              </div>
+          
+              <div class="flex items-center gap-2">
+                <div id="likesCount" class="text-sm text-gray-600">5.4k</div>
+                <button><img class="h-6 w-6" src="heart_empty.svg" alt="Like"></button>
+              </div>
+            </div>
+          </div>     
+    </section>
+</article>
+
+</body> 
+</html>
