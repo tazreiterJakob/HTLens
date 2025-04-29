@@ -9,118 +9,110 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
 </head>
 <body  class="bg-gray-100 grid">
-    <div class="navbar fixed bg-base-100 shadow-sm z-50 top-0 left-0 w-full">
-        <div class="navbar-start">
-            <div class="dropdown">
-                <label tabindex="0" class="btn btn-ghost lg:hidden">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M3 5h14a1 1 0 010 2H3a1 1 0 010-2zm0 4h14a1 1 0 010 2H3a1 1 0 010-2zm0 4h14a1 1 0 010 2H3a1 1 0 010-2z" clip-rule="evenodd" />
-                    </svg>
-                </label>
-                <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a class="font-bold" href="create.html">Erstellen</a></li>
-                    <li><a>Suche</a></li>
-                    <li><a>Hilfe</a></li>
-                </ul>
-            </div>
-            <a class="btn btn-ghost text-xl">HTLens</a>
-        </div>
-      
-        <div class="navbar-center hidden lg:flex mt-6">
-            <ul class="menu menu-horizontal px-1">
-              <li><a href="index.html">Home</a></li>
-              <li><a class="font-bold" href="create.html">Erstellen</a></li>
+
+  <!--NAVBAR START-->
+  <div class="navbar fixed bg-base-100 shadow-sm z-50 top-0 left-0 w-full">
+  <div class="navbar-start">
+      <div class="dropdown">
+          <label tabindex="0" class="btn btn-ghost lg:hidden">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M3 5h14a1 1 0 010 2H3a1 1 0 010-2zm0 4h14a1 1 0 010 2H3a1 1 0 010-2zm0 4h14a1 1 0 010 2H3a1 1 0 010-2z" clip-rule="evenodd" />
+              </svg>
+          </label>
+          <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+              <li><a class="font-bold" href="index.html">Home</a></li>
+              <li><a href="create.html">Erstellen</a></li>
               <li><a>Suche</a></li>
               <li><a>Hilfe</a></li>
-            </ul>
+          </ul>
+      </div>
+      <a class="btn btn-ghost text-xl">HTLens</a>
+  </div>
+
+  <div class="navbar-center hidden lg:flex mt-6">
+      <ul class="menu menu-horizontal px-1">
+        <li><a class="font-bold" href="index.html">Home</a></li>
+        <li><a href="create.html">Erstellen</a></li>
+        <li><a>Suche</a></li>
+        <li><a>Hilfe</a></li>
+      </ul>
+  </div>
+
+  <div class="navbar-end">
+    <a href="#" class="link-hover mr-2">Profil</a>
+    <a href="#" class="btn btn-ghost btn-circle avatar">
+        <div class="w-10 rounded-full"> 
+            <img
+                alt="Tailwind CSS Navbar component"
+                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
         </div>
-      
-        <div class="navbar-end">
-            <a class="btn">Profil</a>
-        </div>
-    </div>
-
-    
-    
-    <div class="h-16 mb-3"></div>
-
-
-
-
-      <div class="card bg-base-100 shadow-sm mt-7 p-2 justify-self-center grid">
-        <h1 class="card-title text-2xl justify-self-center">Beitrag erstellen</h1>
+    </a>
+  </div>
+  </div>
+  <!--NAVBAR END-->
+  <div class="h-16 mb-3"></div>
+  
+      <article class="card bg-base-100 shadow-sm mt-7 p-2 justify-self-center grid m:flex max-sm:m-2">
+        <h1 class="card-title text-2xl justify-self-center font-bold">Beitrag erstellen</h1>
         <hr class="mt-2 mb-2 border-sky-200">
 
-        <ul class="timeline">
-            <li>
-              <div class="timeline-start timeline-box">Fotos/Videos hinzufügen</div>
-              <div class="timeline-middle">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  class="h-5 w-5 text-primary">
-                  <path
-                    fill-rule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                    clip-rule="evenodd" />
-                </svg>
-              </div>
-              <hr class="bg-primary"/>
-            </li>
-            <li>
-              <hr class="bg-primary"/>
-              <div class="timeline-start timeline-box">Titel und Beschreibung</div>
-              <div class="timeline-middle">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  class="h-5 w-5">
-                  <path
-                    fill-rule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                    clip-rule="evenodd" />
-                </svg>
-              </div>
-              <hr />
-            </li>
-            <li>
-              <hr />
-              <div class="timeline-start timeline-box">Tags hinzufügen</div>
-              <div class="timeline-middle">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  class="h-5 w-5">
-                  <path
-                    fill-rule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                    clip-rule="evenodd" />
-                </svg>
-              </div>
-              <hr />
-            </li>
-            <li>
-              <hr />
-              <div class="timeline-start timeline-box">Zusammenfasung</div>
-              <div class="timeline-middle">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  class="h-5 w-5">
-                  <path
-                    fill-rule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                    clip-rule="evenodd" />
-                </svg>
-              </div>
-            </li>
-          </ul>
-    
-    </div>
-</body>
+        <ul class="steps w-full max-w-full text-base max-sm:text-xs">
+          <li class="step step-primary flex-1">Fotos/Videos</li>
+          <li class="step flex-1">Titel u. Beschreibung</li>
+          <li class="step flex-1">Tags</li>
+          <li class="step flex-1">Zusammenfassung</li>
+        </ul>
+
+        <div id="currentTemplate" class="mt-8">
+          <h2 class="text-lg font-bold mb-2">Fotos/Videos hinzufügen</h2>
+
+          <div id="addedImages" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+
+            <div id="img1">
+              <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
+              <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
+            </div>
+            <div id="img1">
+              <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
+              <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
+            </div>
+            <div id="img1">
+              <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
+              <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
+            </div>
+            <div id="img1">
+              <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
+              <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
+            </div>
+            <div id="img1">
+              <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
+              <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
+            </div>
+            <div id="img1">
+              <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
+              <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
+            </div>
+            <div id="img1">
+              <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
+              <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
+            </div>
+            <div id="img1">
+              <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
+              <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
+            </div>
+            <div id="img1">
+              <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
+              <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
+            </div>
+            
+          </div>
+          <input type="file" class="file-input file-input-primary mt-4"/>
+        </div>
+        <div class="flex justify-between m-4">
+          <button class="btn btn-outline">zurück</button>
+          <button class="btn btn-outline btn-primary">weiter</button>
+        </div>
+      </article>
+
+  </body>
 </html>
