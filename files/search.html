@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beiträge suchen</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
+    <script type="module" src="https://unpkg.com/cally"></script>
+</head>
+<body>
+    <a id="topPos" class="block pt-20"></a>
+    <!--NAVBAR START-->
+    <div class="navbar fixed bg-base-100 shadow-sm z-50 top-0 left-0 w-full">
+        <div class="navbar-start">
+            <div class="dropdown">
+                <label tabindex="0" class="btn btn-ghost lg:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M3 5h14a1 1 0 010 2H3a1 1 0 010-2zm0 4h14a1 1 0 010 2H3a1 1 0 010-2zm0 4h14a1 1 0 010 2H3a1 1 0 010-2z" clip-rule="evenodd" />
+                    </svg>
+                </label>
+                <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                    <li><a class="font-bold" href="index.html">Home</a></li>
+                    <li><a href="create.html">Erstellen</a></li>
+                    <li><a>Suche</a></li>
+                    <li><a>Hilfe</a></li>
+                </ul>
+            </div>
+            <a class="btn btn-ghost text-xl">HTLens</a>
+        </div>
+      
+        <div class="navbar-center hidden lg:flex mt-6">
+            <ul class="menu menu-horizontal px-1">
+              <li><a id="home" href="index.html">Home</a></li>
+              <li><a id="create" href="create.html">Erstellen</a></li>
+              <li><a id="search">Suche</a></li>
+              <li><a id="help">Hilfe</a></li>
+            </ul>
+        </div>
+      
+        <div class="navbar-end">
+          <a href="#" class="link-hover mr-2">Profil</a>
+          <a href="#" class="btn btn-ghost btn-circle avatar">
+              <div class="w-10 rounded-full"> 
+                  <img
+                      alt="Tailwind CSS Navbar component"
+                      src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+              </div>
+          </a>
+        </div>
+      </div>
+      <!--NAVBAR END-->
+      <article class="m-8">
+        <h1 class="font-bold text-lg">Filter</h1>
+        <div>
+            <input type="search" class="input mb-2 border-black" placeholder="Nach Titel suchen...">
+            <div id="departmentSearch" class="dropdown">
+                <div tabindex="0" role="button" class="btn m-1">Abteilung</div>
+                <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                    <li><a>über backend einfügen</a></li>
+                </ul>
+            </div>
+            <div id="classSearch" class="dropdown">
+                <div tabindex="0" role="button" class="btn m-1">Klasse</div>
+                <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                    <li><a>über backend einfügen</a></li>
+                </ul>
+            </div>
+            <div id="postedBySearch" class="dropdown">
+                <div tabindex="0" role="button" class="btn m-1">veröffentlicht von</div>
+                <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                    <li><a>über backend einfügen</a></li>
+                </ul>
+            </div>
+            <div id="publicationDateSearchs" class="dropdown">
+                <div tabindex="0" role="button" class="btn m-1">veröffentlicht am</div>
+                <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                    <calendar-date class="cally bg-base-100 border border-base-300 shadow-lg rounded-box">
+                        <svg aria-label="Previous" class="fill-current size-4" slot="previous" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M15.75 19.5 8.25 12l7.5-7.5"></path></svg>
+                        <svg aria-label="Next" class="fill-current size-4" slot="next" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="m8.25 4.5 7.5 7.5-7.5 7.5"></path></svg>
+                        <calendar-month></calendar-month>
+                      </calendar-date>
+                </ul>
+            </div>
+            <div id="tagsSearch" class="dropdown">
+                <div tabindex="0" role="button" class="btn m-1">Tags</div>
+                <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                    <div>
+                        <input type="search" class="input mb-2 border-black" placeholder="Tags suchen, z.B. wispowo">
+                    </div>
+                    <li><a>über backend alle Tags alphabetisch laden, außer es wird konkretes tag gesucht</a></li>
+                </ul>
+            </div>
+            <div id="departmentSearch" class="dropdown">
+                <div tabindex="0" role="button" class="btn m-1">Anzahl Likes</div>
+                <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                    <div>mind.</div><input class="input border-black" value="0" min="0" type="number">
+                    <div>max.</div><input class="input border-black" value="0" min="0" type="number">
+                </ul>
+            </div>
+        </div>
+      </article>
+</body>
+</html>
