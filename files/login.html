@@ -1,15 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTLens Login</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HTLens Login</title>
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" />
 </head>
-<body>
-    
+<body class="h-full">
+  <div class="flex flex-col md:flex-row h-full">
+  
+    <div class="hidden md:flex bg-[#48BFDD] md:w-1/2 h-full justify-center p-8">
+      <div class="text-white text-center font-bold text-2xl max-w-md self-end">
+        Eine einheitliche Plattform<br />
+        für bessere Übersicht<br />
+        über Social-Media-Content.
+      </div>
+    </div>
+
+    <div class="md:w-1/2 w-full h-1/2 md:h-full flex flex-col justify-between items-center p-8 gap-4">
+        <div class="flex flex-col">
+            <a href="https://www.htlwy.at/" class="self-center"><img src="images/htlwy_logo.png" class="h-16 mb-4"></a>
+            <h1 class="text-2xl font-semibold mb-8">Willkommen zurück!</h1>
+            <button class="btn bg-primary text-white">
+            <svg aria-label="Microsoft logo" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M96 96H247V247H96" fill="#f24f23"></path><path d="M265 96V247H416V96" fill="#7eba03"></path><path d="M96 265H247V416H96" fill="#3ca4ef"></path><path d="M265 265H416V416H265" fill="#f9ba00"></path></svg>
+                Login mit Microsoft-Konto
+            </button>
+        </div>
+        
+        <div class="hidden md:flex md:justify-self-end">
+            <div>zurück zur HTL-Seite?</div><a class="link-hover ml-1 hover:cursor-pointer" href="https://www.htlwy.at/">hier klicken</a>
+        </div>
+      </div>
+      
+  </div>
 </body>
 </html>
