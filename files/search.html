@@ -55,31 +55,33 @@
 
       <article class="m-8">
         <h1 class="font-bold text-lg">Filter</h1>
-        <div>
+
+        <div class="flex gap-2 flex-wrap justify-start">
             <input type="search" class="input mb-2 border-black" placeholder="Nach Titel suchen...">
             <div id="departmentSearch" class="dropdown">
-                <div tabindex="0" role="button" class="btn m-1">Abteilung</div>
-                <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                <div tabindex="0" role="button" class="btn">Abteilung</div>
+                <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-50 w-60 p-2 shadow-sm">
                     <input type="search" class="input mb-2 border-black" placeholder="Abteilung suchen, z.B. IT">
                     <li><a>über backend alle Abteilungen alphabetisch laden, außer es wird konkrete Abteilung gesucht</a></li>
                 </ul>
             </div>
             <div id="classSearch" class="dropdown">
-                <div tabindex="0" role="button" class="btn m-1">Klasse</div>
-                <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                <div tabindex="0" role="button" class="btn">Klasse</div>
+                <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-50 w-60 p-2 shadow-sm">
                     <input type="search" class="input mb-2 border-black" placeholder="Klasse suchen, z.B. 3AHIT">
                     <li><a>über backend alle Klassen alphabetisch laden, außer es wird konkrete Klasse gesucht</a></li>
                 </ul>
             </div>
             <div id="postedBySearch" class="dropdown">
-                <div tabindex="0" role="button" class="btn m-1">veröffentlicht von</div>
-                <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-                    <li><a>über backend einfügen</a></li>
+                <div tabindex="0" role="button" class="btn">veröffentlicht von</div>
+                <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-50 w-60 p-2 shadow-sm">
+                    <input type="search" class="input mb-2 border-black" placeholder="Username suchen">
+                    <li><a>über backend alle User alphabetisch laden, außer es wird ein konkreter User gesucht</a></li>
                 </ul>
             </div>
             <div id="publicationDateSearchs" class="dropdown">
-                <div tabindex="0" role="button" class="btn m-1">veröffentlicht am</div>
-                <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                <div tabindex="0" role="button" class="btn">veröffentlicht am</div>
+                <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-50 w-60 p-2 shadow-sm">
                     <calendar-date class="cally bg-base-100 border border-base-300 shadow-lg rounded-box">
                         <svg aria-label="Previous" class="fill-current size-4" slot="previous" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M15.75 19.5 8.25 12l7.5-7.5"></path></svg>
                         <svg aria-label="Next" class="fill-current size-4" slot="next" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="m8.25 4.5 7.5 7.5-7.5 7.5"></path></svg>
@@ -88,20 +90,75 @@
                 </ul>
             </div>
             <div id="tagsSearch" class="dropdown">
-                <div tabindex="0" role="button" class="btn m-1">Tags</div>
-                <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                <div tabindex="0" role="button" class="btn">Tags</div>
+                <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-50 w-60 p-2 shadow-sm">
                     <input type="search" class="input mb-2 border-black" placeholder="Tags suchen, z.B. wispowo">
                     <li><a>über backend alle Tags alphabetisch laden, außer es wird konkretes tag gesucht</a></li>
                 </ul>
             </div>
             <div id="departmentSearch" class="dropdown">
-                <div tabindex="0" role="button" class="btn m-1">Anzahl Likes</div>
-                <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                <div tabindex="0" role="button" class="btn">Anzahl Likes</div>
+                <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-50 w-60 p-2 shadow-sm">
                     <div>mind.</div><input class="input border-black" value="0" min="0" type="number">
                     <div>max.</div><input class="input border-black" value="0" min="0" type="number">
                 </ul>
             </div>
         </div>
+      </article>
+
+      <article class="m-8">
+        <div class="flex flex-row font-bold ">
+            <div class="mr-1 text-lg">Ergebnisse</div><div id="resultsAmount" class="self-center text-sm">(732)</div>
+        </div>  
+        <section id="searchResults" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-4">
+
+            <div class="card bg-white shadow-lg text-justify z-10">
+                <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Bild"/></figure>
+                <div class="card-body">
+                    <h2 class="card-title">Karte 1</h2>
+                    <p>Das ist eine Beschreibung mit sehr viel Text, um zu testen, ob der Container sich anpasst. Wenn der Text zu lang wird, bleibt alles innerhalb des Kartenbereichs.</p>
+                    <div class="card-actions justify-end">
+                        <a href="postReview.html"><button class="btn btn-primary">Mehr erfahren</button></a>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="card bg-white shadow-lg">
+                <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Bild" /></figure>
+                <div class="card-body">
+                    <h2 class="card-title">Karte 2</h2>
+                    <p>Kurzer Text.</p>
+                    <div class="card-actions justify-end">
+                        <button class="btn btn-primary">Mehr erfahren</button>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="card bg-white shadow-lg">
+                <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Bild" /></figure>
+                <div class="card-body">
+                    <h2 class="card-title">Karte 3</h2>
+                    <p>Hier könnte eine längere Beschreibung stehen, die sich automatisch in den Container einfügt.</p>
+                    <div class="card-actions justify-end">
+                        <button class="btn btn-primary">Mehr erfahren</button>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="card bg-white shadow-lg">
+                <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Bild" /></figure>
+                <div class="card-body">
+                    <h2 class="card-title">Karte 4</h2>
+                    <p>Noch eine Karte mit flexibler Höhe.</p>
+                    <div class="card-actions justify-end">
+                        <button class="btn btn-primary">Mehr erfahren</button>
+                    </div>
+                </div>
+            </div>
+        </section>
       </article>
 </body>
 </html>
