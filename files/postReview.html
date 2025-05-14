@@ -58,13 +58,11 @@
     </a>
   
     <section class="card bg-white shadow-lg text-justify flex flex-col lg:flex-row max-w-6xl w-full p-4">
-        <figure class="w-full lg:w-1/2 relative">
-            <img class="h-full w-full object-cover rounded-xl" 
-                src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" 
-                alt="Bild" />
-            <a class="btn absolute bottom-2 right-2" href="images/resize.svg">
-                <img class="h-5" src="images/resize.svg"/>
-            </a>
+        <figure class="w-full lg:w-1/2 relative rounded-xl">
+            <img class="rounded-xl" src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Bild" >
+              <label for="fullscreen-carousel-modal" class="btn absolute bottom-2 right-2 cursor-pointer">
+                <img class="h-5" src="images/resize.svg" />
+              </label>
         </figure>
 
         <div class="w-full lg:w-1/2 p-4 flex flex-col">
@@ -220,5 +218,46 @@
         </div>
     </div>
 </article>
+<!-- MODAL + FULLSCREEN CAROUSEL -->
+<input type="checkbox" id="fullscreen-carousel-modal" class="modal-toggle" />
+<div class="modal modal-bottom sm:modal-middle bg-black bg-opacity-70 backdrop-blur-sm">
+  <div class="modal-box max-w-5xl w-full p-0 bg-black rounded-lg relative">
+
+    <label for="fullscreen-carousel-modal" class="btn btn-sm btn-circle absolute right-4 top-4 z-50">✕</label>
+
+    <div class="carousel w-full h-[80vh]">
+      <div id="modal-slide1" class="carousel-item relative w-full">
+        <video controls class="w-full object-contain h-full">
+          <source src="lebron.mp4">
+        </video>
+        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+          <a href="#modal-slide4" class="btn btn-circle">❮</a>
+          <a href="#modal-slide2" class="btn btn-circle">❯</a>
+        </div>
+      </div>
+      <div id="modal-slide2" class="carousel-item relative w-full">
+        <img src="https://img.daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.webp" class="w-full object-contain h-full" />
+        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+          <a href="#modal-slide1" class="btn btn-circle">❮</a>
+          <a href="#modal-slide3" class="btn btn-circle">❯</a>
+        </div>
+      </div>
+      <div id="modal-slide3" class="carousel-item relative w-full">
+        <img src="https://img.daisyui.com/images/stock/photo-1414694762283-acccc27bca85.webp" class="w-full object-contain h-full" />
+        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+          <a href="#modal-slide2" class="btn btn-circle">❮</a>
+          <a href="#modal-slide4" class="btn btn-circle">❯</a>
+        </div>
+      </div>
+      <div id="modal-slide4" class="carousel-item relative w-full">
+        <img src="https://img.daisyui.com/images/stock/photo-1665553365602-b2fb8e5d1707.webp" class="w-full object-contain h-full" />
+        <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+          <a href="#modal-slide3" class="btn btn-circle">❮</a>
+          <a href="#modal-slide1" class="btn btn-circle">❯</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </body> 
 </html>
