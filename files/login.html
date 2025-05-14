@@ -24,10 +24,20 @@
         <div class="flex flex-col">
             <a href="https://www.htlwy.at/" class="self-center"><img src="images/htlwy_logo.png" class="h-16 mb-4"></a>
             <h1 class="text-2xl font-semibold mb-8">Willkommen zurück!</h1>
-            <button class="btn bg-primary text-white">
-            <svg aria-label="Microsoft logo" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M96 96H247V247H96" fill="#f24f23"></path><path d="M265 96V247H416V96" fill="#7eba03"></path><path d="M96 265H247V416H96" fill="#3ca4ef"></path><path d="M265 265H416V416H265" fill="#f9ba00"></path></svg>
-                Login mit Microsoft-Konto
-            </button>
+
+            <div class="flex flex-col gap-3">
+              <fieldset class="fieldset">
+                <legend class="fieldset-legend">Benutzername:</legend>
+                <input type="text" class="input border-black" placeholder="Benutzer eingeben..." />
+              </fieldset>
+              <fieldset class="fieldset">
+                <legend class="fieldset-legend">Passwort:</legend>
+                <input type="password" class="input border-black" placeholder="Passwort eingeben..." />
+              </fieldset>
+              <button class="btn bg-primary text-white">
+                  Einloggen
+              </button>
+            </div>
         </div>
         
         <div class="hidden md:flex md:justify-self-end">
