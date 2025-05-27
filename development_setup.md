@@ -21,13 +21,24 @@
 `pip install -r .\requirements.txt`
 
 7. (optional) install watchdog\
-`pip install watchdog`
+```
+pip install watchdog
+```
 
-8. initiate the DB\
-`flask --app HTLens init-db`
+8. create the ".env" file containing the following (replace with correct values):
+```
+LDAP_BIND_PASSWORD='replace_me'
+```
 
-9. run the server\
-`flask --app HTLens run --debug`
+9. initiate the DB\
+```
+flask --app HTLens init-db
+```
+
+10. run the server\
+```
+flask --app HTLens run --debug
+```
 
 
 ## start existing setup
