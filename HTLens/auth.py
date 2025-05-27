@@ -53,58 +53,53 @@ def login():
             return render_template('auth/login.html')
         
         ensureUserExists(uid, displayName, memberOf)
-        session['uid'] = uid
-        session['displayName'] = displayName
+        user = getUser(uid)
+        for key in user.keys():
+            print(key)
+            session[key] = user[key]
         return redirect(url_for('index'))
 
     return render_template('auth/login.html')
 
+def getUser(uid):
+    db = get_db()
+    return db.execute("SELECT * FROM user WHERE uid = ? LIMIT 1", (uid,)).fetchone()
 
 def ensureUserExists(uid, displayName, memberOf):
+    accessLevel = 0
+    # 0 none, 1 read only, 2 can post, 3 social media manager, 4 admin
+    type = 'undefined'
+    klasse = None
+    if 'cn=lehrer,ou=groups,dc=schule,dc=local' in memberOf:
+        type = 'teacher'
+        accessLevel = 2
+    elif 'cn=schueler,ou=groups,dc=schule,dc=local' in memberOf:
+        type = 'student'
+        accessLevel = 2
+        for potKlasse in current_app.config['KLASSEN']:
+            if 'cn=' + potKlasse + ',ou=groups,dc=schule,dc=local' in memberOf:
+                klasse = potKlasse
+
+
     db = get_db()
     user = db.execute("SELECT 1 FROM user WHERE uid = ? LIMIT 1", (uid,)).fetchone()
     if user is None:
-        accessLevel = 0
-        # 0 none, 1 read only, 2 can post, 3 social media manager, 4 admin
-        type = 'undefined'
-        klasse = None
-        if 'cn=lehrer,ou=groups,dc=schule,dc=local' in memberOf:
-            type = 'teacher'
-            accessLevel = 2
-        elif 'cn=schueler,ou=groups,dc=schule,dc=local' in memberOf:
-            type = 'student'
-            accessLevel = 2
-            for potKlasse in current_app.config['KLASSEN']:
-                if 'cn=' + potKlasse + ',ou=groups,dc=schule,dc=local' in memberOf:
-                    klasse = potKlasse
-        
         db.execute("INSERT INTO user (uid, displayName, type, accessLevel, klasse) VALUES (?, ?, ?, ?, ?)", (uid, displayName, type, accessLevel, klasse))
+        db.commit()
+    else:
+        db.execute("UPDATE user SET displayName = ?, type = ?, accessLevel = ?, klasse = ? WHERE uid = ?", (displayName, type, accessLevel, klasse, uid))
         db.commit()
 
 @bp.before_app_request
-def load_logged_in_user():
-    user_id = session.get('user_id')
+def ensure_login():
+    if session.get('uid'):
+        return
 
-    if user_id is None:
-        g.user = None
-    else:
-        g.user = get_db().execute(
-            'SELECT * FROM user WHERE id = ?', (user_id,)
-        ).fetchone()
+    if not (request.path == url_for('auth.login') or request.path.startswith("/static/")):
+        return redirect(url_for('auth.login'))
 
 
 @bp.route('/logout')
 def logout():
     session.clear()
     return redirect(url_for('index'))
-
-
-def login_required(view):
-    @functools.wraps(view)
-    def wrapped_view(**kwargs):
-        if g.user is None:
-            return redirect(url_for('auth.login'))
-
-        return view(**kwargs)
-
-    return wrapped_view

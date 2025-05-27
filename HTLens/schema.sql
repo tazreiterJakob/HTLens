@@ -2,13 +2,15 @@ DROP TABLE IF EXISTS user;
 DROP TABLE IF EXISTS post;
 DROP TABLE IF EXISTS comment;
 DROP TABLE IF EXISTS media;
+DROP TABLE IF EXISTS like;
 
 CREATE TABLE user (
   uid TEXT PRIMARY KEY UNIQUE NOT NULL,
   displayName TEXT NOT NULL,
   type TEXT NOT NULL,
   accessLevel INTEGER NOT NULL, -- 0 none, 1 read only, 2 can post, 3 social media manager, 4 admin
-  klasse TEXT
+  klasse TEXT,
+  profilePic TEXT
 );
 
 CREATE TABLE post (
@@ -19,6 +21,14 @@ CREATE TABLE post (
   title TEXT NOT NULL,
   description TEXT,
   tags TEXT,
+  FOREIGN KEY (user_id) REFERENCES user (uid) ON DELETE CASCADE
+);
+
+CREATE TABLE like (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  post_id INTEGER NOT NULL,
+  user_id TEXT NOT NULL,
+  FOREIGN KEY (post_id) REFERENCES post (id) ON DELETE CASCADE
   FOREIGN KEY (user_id) REFERENCES user (uid) ON DELETE CASCADE
 );
 
