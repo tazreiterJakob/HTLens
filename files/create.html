@@ -65,7 +65,259 @@
 
         <!--CURRENT TEMPLATE START-->
         <div id="currentTemplate" class="mt-8">
+
+          <!--ADD IMAGES AND VIDEOS START-->
+          <section id="addImagesAndVideos" class="">
+            <h2 class="text-lg font-bold mb-2">Fotos/Videos hinzufügen</h2>
+            
+                      <div id="addedImages" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+            
+                        <div id="img1">
+                          <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
+                          <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
+                        </div>
+                        <div id="img1">
+                          <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
+                          <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
+                        </div>
+                        <div id="img1">
+                          <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
+                          <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
+                        </div>
+                        <div id="img1">
+                          <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
+                          <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
+                        </div>
+                        <div id="img1">
+                          <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
+                          <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
+                        </div>
+                        <div id="img1">
+                          <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
+                          <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
+                        </div>
+                        <div id="img1">
+                          <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
+                          <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
+                        </div>
+                        <div id="img1">
+                          <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
+                          <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
+                        </div>
+                        <div id="img1">
+                          <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
+                          <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
+                        </div>
+                        
+                      </div>
+                      <input type="file" accept=".png, .jpg, .jpeg, .mp4" class="file-input file-input-primary mt-4"/>
+                    </div>
+            </section>
+            <!--ADD IMAGES AND VIDEOS END-->
+
+            <!--ADD TITLE AND DESCRIPTION START-->
+            <section id="addTitleAndDescription" class="hidden">
+              <h2 class="text-lg font-bold mb-2">Titel u. Beschreibung hinzufügen</h2>
           
+              <div class="font-bold mt-8">Titel</div>
+              <input type="text" placeholder="aussagekräftiger Titel" class="input input-info w-1/2" />
+          
+              <div class="font-bold mt-4">Beschreibung (max. 500 Zeichen)</div>
+              <textarea type="text" placeholder="Kurze Beschreibung..." maxlength="500" class="textarea textarea-info w-full min-h-48"></textarea>
+            </section>
+            <!--ADD TITLE AND DESCRIPTION END-->
+
+          <!--ADD TAGS START-->
+          <section id="addTags" class="hidden">
+            <h2 class="text-lg font-bold mb-2">Tags hinzufügen</h2>
+          
+            <div class="dropdown tooltip" data-tip="verpflichtend">
+              <div tabindex="0" role="button" class="btn m-1">Schuljahr wählen</div>
+              <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                <li><a>2025</a></li>
+                <li><a>2024</a></li>
+                <li><a>2023</a></li>
+                <li><a>2022</a></li>
+                <li><a>2021</a></li>
+                <li><a>weitere über backend laden</a></li>
+              </ul>
+            </div>
+          
+            <div class="dropdown tooltip" data-tip="verpflichtend">
+              <div tabindex="0" role="button" class="btn m-1">Abteilung wählen</div>
+              <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                <li><a>IT</a></li>
+                <li><a>WING</a></li>
+                <li><a>AUT</a></li>
+                <li><a>ETEC</a></li>
+                <li><a>AFME</a></li>
+              </ul>
+            </div>
+          
+            <div class="dropdown tooltip" data-tip="verpflichtend">
+              <div tabindex="0" role="button" class="btn m-1">Klasse wählen</div>
+              <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                <li><a>hier alle Klassen bezogen auf Abteilung</a></li>
+                <!--über backend hinzufügen-->
+              </ul>
+            </div>
+          
+          <div class="font-bold mt-8">Tag eingeben</div>
+          <input type="text" placeholder="z.B. wispowo" class="input input-info w-1/2"/>
+          <button class="btn btn-active btn-primary">hinzufügen</button>
+          
+          <div id="tagsField" class="mt-4 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3">
+          <a class="badge flex badge-info items-center" onclick="deleteTag()">
+          <img class="h-5" src="images/hashtag.svg"><div class="hover:line-through hover:cursor-pointer">wispowo</div>
+          </a>
+          <a class="badge flex badge-info items-center" onclick="deleteTag()">
+          <img class="h-5" src="images/hashtag.svg"><div class="hover:line-through hover:cursor-pointer">wispowo</div>
+          </a>
+          <a class="badge flex badge-info items-center" onclick="deleteTag()">
+          <img class="h-5" src="images/hashtag.svg"><div class="hover:line-through hover:cursor-pointer">wispowo</div>
+          </a>
+          <a class="badge flex badge-info items-center" onclick="deleteTag()">
+          <img class="h-5" src="images/hashtag.svg"><div class="hover:line-through hover:cursor-pointer">wispowo</div>
+          </a>
+          <a class="badge flex badge-info items-center" onclick="deleteTag()">
+          <img class="h-5" src="images/hashtag.svg"><div class="hover:line-through hover:cursor-pointer">wispowo</div>
+          </a>
+          <a class="badge flex badge-info items-center" onclick="deleteTag()">
+          <img class="h-5" src="images/hashtag.svg"><div class="hover:line-through hover:cursor-pointer">wispowo</div>
+          </a>
+          <a class="badge flex badge-info items-center" onclick="deleteTag()">
+          <img class="h-5" src="images/hashtag.svg"><div class="hover:line-through hover:cursor-pointer">wispowo</div>
+          </a>
+          <a class="badge flex badge-info items-center" onclick="deleteTag()">
+          <img class="h-5" src="images/hashtag.svg"><div class="hover:line-through hover:cursor-pointer">wispowo</div>
+          </a>
+          <a class="badge flex badge-info items-center" onclick="deleteTag()">
+          <img class="h-5" src="images/hashtag.svg"><div class="hover:line-through hover:cursor-pointer">wispowo</div>
+          </a>
+          </div>
+          </section>    
+          <!--ADD TAGS END-->
+
+          <!--OVERVIEW START-->
+          <section id="overview" class="hidden">
+            <h2 class="text-lg font-bold mb-2">Übersicht</h2>
+          
+            <div class="flex justify-between items-center mt-8">
+              <div class="font-bold">Titel</div>
+              <a class="link-hover hover:cursor-pointer text-blue-600">bearbeiten</a>
+            </div>
+            <!--TITLE START-->
+            <div id="title">Lorem ipsum</div>
+            <!--TITLE END
+            -->
+            <hr class="border-2 mt-4">
+          
+            <div class="flex justify-between items-center mt-8">
+              <div class="font-bold">Titel</div>
+              <a class="link-hover hover:cursor-pointer text-blue-600">bearbeiten</a>
+            </div>
+            <!--DESCRIPTION START-->
+            <div id="title" class="text-justify">Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.
+              Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.
+              Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.
+            </div>
+            <!--DESCRIPTION END-->
+            <hr class="border-2 mt-4">
+          
+          
+            <!--TAGS START-->
+            <div class="flex justify-between items-center mt-8">
+              <div class="font-bold">Tags</div>
+              <a class="link-hover hover:cursor-pointer text-blue-600">bearbeiten</a>
+            </div>
+          
+            <div id="tagsField" class="flex flex-wrap justify-start gap-x-6 gap-y-3 mt-4">
+              <a class="badge flex badge-info items-center" onclick="deleteTag()">
+                <img class="h-5" src="images/hashtag.svg"><div class="hover:line-through hover:cursor-pointer">wispowo</div>
+              </a>
+              <a class="badge flex badge-info items-center" onclick="deleteTag()">
+                <img class="h-5" src="images/hashtag.svg"><div class="hover:line-through hover:cursor-pointer">wispowo</div>
+              </a>
+              <a class="badge flex badge-info items-center" onclick="deleteTag()">
+                <img class="h-5" src="images/hashtag.svg"><div class="hover:line-through hover:cursor-pointer">wispowo</div>
+              </a>
+              <a class="badge flex badge-info items-center" onclick="deleteTag()">
+                <img class="h-5" src="images/hashtag.svg"><div class="hover:line-through hover:cursor-pointer">wispowo</div>
+              </a>
+              <a class="badge flex badge-info items-center" onclick="deleteTag()">
+                <img class="h-5" src="images/hashtag.svg"><div class="hover:line-through hover:cursor-pointer">wispowo</div>
+              </a>
+              <a class="badge flex badge-info items-center" onclick="deleteTag()">
+                <img class="h-5" src="images/hashtag.svg"><div class="hover:line-through hover:cursor-pointer">wispowo</div>
+              </a>
+              <a class="badge flex badge-info items-center" onclick="deleteTag()">
+                <img class="h-5" src="images/hashtag.svg"><div class="hover:line-through hover:cursor-pointer">wispowo</div>
+              </a>
+              <a class="badge flex badge-info items-center" onclick="deleteTag()">
+                <img class="h-5" src="images/hashtag.svg"><div class="hover:line-through hover:cursor-pointer">wispowo</div>
+              </a>
+              <a class="badge flex badge-info items-center" onclick="deleteTag()">
+                <img class="h-5" src="images/hashtag.svg"><div class="hover:line-through hover:cursor-pointer">wispowo</div>
+              </a>
+            </div>
+            <!--TAGS END-->
+          
+            <hr class="border-2 mt-4">
+          
+            <!--IMAGES START-->
+            <div class="flex justify-between items-center mt-8">
+              <div class="font-bold">Tags</div>
+              <a class="link-hover hover:cursor-pointer text-blue-600">bearbeiten</a>
+            </div>
+          
+            <div id="addedImages" class="flex flex-wrap mt-4 justify-evenly">
+          
+              <div id="images">
+                <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
+                <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
+              </div>
+              <div id="img1">
+                <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
+                <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
+              </div>
+              <div id="img1">
+                <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
+                <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
+              </div>
+              <div id="img1">
+                <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
+                <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
+              </div>
+              <div id="img1">
+                <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
+                <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
+              </div>
+              <div id="img1">
+                <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
+                <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
+              </div>
+              <div id="img1">
+                <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
+                <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
+              </div>
+              <div id="img1">
+                <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
+                <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
+              </div>
+              <div id="img1">
+                <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
+                <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
+              </div>
+              <div id="img1">
+                <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
+                <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
+              </div>
+            </div>
+            <!--IMAGES END-->
+            <hr class="border-2 mt-4">
+          </section>
+          <!--OVERVIEW END-->
+
         </div>
         <!--CURRENT TEMPLATE END-->
           
