@@ -3,7 +3,6 @@ from flask import (
 )
 from werkzeug.exceptions import abort
 
-from HTLens.auth import login_required
 from HTLens.db import get_db
 
 bp = Blueprint('blog', __name__)
@@ -21,7 +20,6 @@ def index():
 
 
 @bp.route('/create', methods=('GET', 'POST'))
-@login_required
 def create():
     if request.method == 'POST':
         title = request.form['title']
@@ -64,7 +62,6 @@ def get_post(id, check_author=True):
 
 
 @bp.route('/<int:id>/update', methods=('GET', 'POST'))
-@login_required
 def update(id):
     post = get_post(id)
 
@@ -92,7 +89,6 @@ def update(id):
 
 
 @bp.route('/<int:id>/delete', methods=('POST',))
-@login_required
 def delete(id):
     get_post(id)
     db = get_db()
