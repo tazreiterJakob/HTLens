@@ -9,7 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
 </head>
-<body class="bg-gray-100 grid justify-center">
+<body class="bg-gray-100 dark:bg-gray-700 grid justify-center">
 
 <!--NAVBAR START-->
     <div class="navbar fixed bg-base-100 shadow-sm z-50 top-0 left-0 w-full">
@@ -54,10 +54,10 @@
 
 <article id="currentPost" class="mt-10 pt-20 flex justify-center rounded-xl px-4">
     <a class="btn link link-primary mr-4 self-start" href="index.html">
-      <img class="h-6 w-6" src="images/left-arrow.svg" alt="Zurück">
+      <img class="h-6 w-7 dark:bg-white" src="images/left-arrow-white.png" alt="Zurück">
     </a>
   
-    <section class="card bg-white shadow-lg text-justify flex flex-col lg:flex-row max-w-6xl w-full p-4 items-start">
+    <section class="card bg-white dark:bg-gray-800 shadow-lg text-justify flex flex-col lg:flex-row max-w-6xl w-full p-4 items-start">
         <figure class="w-full lg:w-1/2 relative rounded-xl">
             <img class="rounded-xl" src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Bild" >
               <label for="fullscreen-carousel-modal" class="btn absolute bottom-2 right-2 cursor-pointer">
@@ -215,11 +215,11 @@
                     <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
                   </div>
                 </div>
-                <a href="#" class="hover:underline text-sm font-medium text-gray-700">user82240</a>
+                <a href="#" class="hover:underline text-sm font-medium text-gray-700 dark:text-gray-400">user82240</a>
               </div>
           
               <div class="flex items-center gap-2">
-                <div id="likesCount" class="text-sm text-gray-600">5.4k</div>
+                <div id="likesCount" class="text-sm text-gray-600 dark:text-gray-400">5.4k</div>
                 <button><img class="h-6 w-6" src="images/heart_empty.svg" alt="Like"></button>
               </div>
             </div>
