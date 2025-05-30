@@ -9,7 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
 </head>
-<body class="bg-gray-100 grid justify-center">
+<body class="bg-gray-100 dark:bg-gray-700 grid justify-center">
 
 <!--NAVBAR START-->
     <div class="navbar fixed bg-base-100 shadow-sm z-50 top-0 left-0 w-full">
@@ -53,14 +53,14 @@
   <!--NAVBAR END-->
 
 <article id="currentPost" class="mt-10 pt-20 flex justify-center rounded-xl px-4">
-    <a class="btn link link-primary mr-4 self-start" href="index.html">
-      <img class="h-6 w-6" src="images/left-arrow.svg" alt="Zurück">
+    <a class="btn link link-primary mr-4 self-start dark:bg-gray-500 dark:border-gray-500 dark:hover:bg-gray-100 dark:hover:border-gray-100" href="index.html">
+      <img class="h-6 w-7" src="images/left-arrow.svg" alt="Zurück">
     </a>
   
-    <section class="card bg-white shadow-lg text-justify flex flex-col lg:flex-row max-w-6xl w-full p-4 items-start">
+    <section class="card bg-white dark:bg-gray-800 shadow-lg text-justify flex flex-col lg:flex-row max-w-6xl w-full p-4 items-start">
         <figure class="w-full lg:w-1/2 relative rounded-xl">
             <img class="rounded-xl" src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Bild" >
-              <label for="fullscreen-carousel-modal" class="btn absolute bottom-2 right-2 cursor-pointer">
+              <label for="fullscreen-carousel-modal" class="btn absolute bottom-2 right-2 cursor-pointer dark:bg-gray-500 dark:border-gray-500 dark:hover:bg-gray-100 dark:hover:border-gray-100">
                 <img class="h-5" src="images/resize.svg" />
               </label>
         </figure>
@@ -116,7 +116,7 @@
             <!--KOMMENTARE START-->
             <div>
               <div class="collapse collapse-arrow bg-base-100 border border-base-300 mb-4">
-                <input type="checkbox" name="my-accordion-2" checked="checked" />
+                <input type="checkbox" name="my-accordion-2"/>
                 <div class="collapse-title font-bold">Kommentare</div>
                   <div class="collapse-content text-sm">
 
@@ -215,11 +215,11 @@
                     <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
                   </div>
                 </div>
-                <a href="#" class="hover:underline text-sm font-medium text-gray-700">user82240</a>
+                <a href="#" class="hover:underline text-sm font-medium text-gray-700 dark:text-gray-400">user82240</a>
               </div>
           
               <div class="flex items-center gap-2">
-                <div id="likesCount" class="text-sm text-gray-600">5.4k</div>
+                <div id="likesCount" class="text-sm text-gray-600 dark:text-gray-400">5.4k</div>
                 <button><img class="h-6 w-6" src="images/heart_empty.svg" alt="Like"></button>
               </div>
             </div>
@@ -230,7 +230,7 @@
 <h2 class="ml-4 text-lg font-bold mt-8">ähnliche Beiträge</h2>
 
 <article id="similiarPosts" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-4 z-10">
-    <div class="card bg-white shadow-lg text-justify">
+    <div class="card bg-white shadow-lg text-justify dark:bg-gray-800">
         <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Bild"/></figure>
         <div class="card-body">
             <h2 class="card-title">Karte 1</h2>
@@ -242,7 +242,7 @@
     </div>
 
 
-    <div class="card bg-white shadow-lg">
+    <div class="card bg-white shadow-lg text-justify dark:bg-gray-800">
         <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Bild" /></figure>
         <div class="card-body">
             <h2 class="card-title">Karte 2</h2>
@@ -254,7 +254,7 @@
     </div>
 
     
-    <div class="card bg-white shadow-lg">
+    <div class="card bg-white shadow-lg text-justify dark:bg-gray-800">
         <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Bild" /></figure>
         <div class="card-body">
             <h2 class="card-title">Karte 3</h2>
@@ -266,7 +266,7 @@
     </div>
 
     
-    <div class="card bg-white shadow-lg">
+    <div class="card bg-white shadow-lg text-justify dark:bg-gray-800">
         <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Bild" /></figure>
         <div class="card-body">
             <h2 class="card-title">Karte 4</h2>
@@ -278,7 +278,7 @@
     </div>
 
 
-    <div class="card bg-white shadow-lg">
+    <div class="card bg-white shadow-lg text-justify dark:bg-gray-800">
         <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Bild" /></figure>
         <div class="card-body">
             <h2 class="card-title">Karte 5</h2>
@@ -290,7 +290,7 @@
     </div>
 
     
-    <div class="card bg-white shadow-lg">
+    <div class="card bg-white shadow-lg text-justify dark:bg-gray-800">
         <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Bild" /></figure>
         <div class="card-body">
             <h2 class="card-title">Karte 6</h2>
@@ -302,7 +302,7 @@
     </div>
 
     
-    <div class="card bg-white shadow-lg">
+    <div class="card bg-white shadow-lg text-justify dark:bg-gray-800">
         <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Bild" /></figure>
         <div class="card-body">
             <h2 class="card-title">Karte 7</h2>
