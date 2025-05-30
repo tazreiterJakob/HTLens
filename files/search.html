@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
     <script type="module" src="https://unpkg.com/cally"></script>
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-100 dark:bg-gray-700">
     <a id="topPos" class="block pt-20"></a>
     <a class="fixed box right-2 bottom-2 z-40" href="#topPos">
         <button>
@@ -64,28 +64,28 @@
         <div class="flex gap-2 flex-wrap justify-start">
             <input type="search" class="input mb-2 border-black" placeholder="Nach Titel suchen...">
             <div id="departmentSearch" class="dropdown">
-                <div tabindex="0" role="button" class="btn bg-white">Abteilung</div>
+                <div tabindex="0" role="button" class="btn bg-white dark:bg-gray-800">Abteilung</div>
                 <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-50 w-60 p-2 shadow-sm">
                     <input type="search" class="input mb-2 border-black" placeholder="Abteilung suchen, z.B. IT">
                     <li><a>über backend alle Abteilungen alphabetisch laden, außer es wird konkrete Abteilung gesucht</a></li>
                 </ul>
             </div>
             <div id="classSearch" class="dropdown">
-                <div tabindex="0" role="button" class="btn bg-white">Klasse</div>
+                <div tabindex="0" role="button" class="btn bg-white dark:bg-gray-800">Klasse</div>
                 <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-50 w-60 p-2 shadow-sm">
                     <input type="search" class="input mb-2 border-black" placeholder="Klasse suchen, z.B. 3AHIT">
                     <li><a>über backend alle Klassen alphabetisch laden, außer es wird konkrete Klasse gesucht</a></li>
                 </ul>
             </div>
             <div id="postedBySearch" class="dropdown">
-                <div tabindex="0" role="button" class="btn bg-white">veröffentlicht von</div>
+                <div tabindex="0" role="button" class="btn bg-white dark:bg-gray-800">veröffentlicht von</div>
                 <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-50 w-60 p-2 shadow-sm">
                     <input type="search" class="input mb-2 border-black" placeholder="Username suchen">
                     <li><a>über backend alle User alphabetisch laden, außer es wird ein konkreter User gesucht</a></li>
                 </ul>
             </div>
             <div id="publicationDateSearch" class="dropdown">
-                <div tabindex="0" role="button" class="btn bg-white">veröffentlicht am</div>
+                <div tabindex="0" role="button" class="btn bg-white dark:bg-gray-800">veröffentlicht am</div>
                 <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-50 w-70 p-2 shadow-sm">
                     <calendar-date class="cally bg-base-100 border border-base-300 shadow-lg rounded-box">
                         <svg aria-label="Previous" class="fill-current size-4" slot="previous" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M15.75 19.5 8.25 12l7.5-7.5"></path></svg>
@@ -95,14 +95,14 @@
                 </ul>
             </div>
             <div id="tagsSearch" class="dropdown">
-                <div tabindex="0" role="button" class="btn bg-white">Tags</div>
+                <div tabindex="0" role="button" class="btn bg-white dark:bg-gray-800">Tags</div>
                 <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-50 w-60 p-2 shadow-sm">
                     <input type="search" class="input mb-2 border-black" placeholder="Tags suchen, z.B. wispowo">
                     <li><a>über backend alle Tags alphabetisch laden, außer es wird konkretes tag gesucht</a></li>
                 </ul>
             </div>
             <div id="departmentSearch" class="dropdown">
-                <div tabindex="0" role="button" class="btn bg-white">Anzahl Likes</div>
+                <div tabindex="0" role="button" class="btn bg-white dark:bg-gray-800">Anzahl Likes</div>
                 <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-50 w-60 p-2 shadow-sm">
                     <div>mind.</div><input class="input border-black" value="0" min="0" type="number">
                     <div>max.</div><input class="input border-black" value="0" min="0" type="number">
@@ -115,9 +115,10 @@
         <div class="flex flex-row font-bold ">
             <div class="mr-1 text-lg">Ergebnisse</div><div id="resultsAmount" class="self-center text-sm">(732)</div>
         </div>  
+
         <section id="searchResults" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-4">
 
-            <div class="card bg-white shadow-lg text-justify z-10">
+            <div class="card bg-white shadow-lg text-justify dark:bg-gray-800">
                 <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Bild"/></figure>
                 <div class="card-body">
                     <h2 class="card-title">Karte 1</h2>
@@ -129,7 +130,7 @@
             </div>
             
             
-            <div class="card bg-white shadow-lg">
+            <div class="card bg-white shadow-lg text-justify dark:bg-gray-800">
                 <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Bild" /></figure>
                 <div class="card-body">
                     <h2 class="card-title">Karte 2</h2>
@@ -141,7 +142,7 @@
             </div>
 
             
-            <div class="card bg-white shadow-lg">
+            <div class="card bg-white shadow-lg text-justify dark:bg-gray-800">
                 <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Bild" /></figure>
                 <div class="card-body">
                     <h2 class="card-title">Karte 3</h2>
@@ -153,7 +154,7 @@
             </div>
 
             
-            <div class="card bg-white shadow-lg">
+            <div class="card bg-white shadow-lg text-justify dark:bg-gray-800">
                 <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Bild" /></figure>
                 <div class="card-body">
                     <h2 class="card-title">Karte 4</h2>
