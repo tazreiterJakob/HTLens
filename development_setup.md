@@ -12,52 +12,52 @@ git clone https://github.com/tazreiterJakob/HTLens.git
 cd .\HTLens
 ```
 
-2. download tailwind CLI and place it inside the repo
+3. download tailwind CLI and place it inside the repo
 ```
 https://github.com/tailwindlabs/tailwindcss/releases/latest
 ```
 
-3. start a PS where you can run scripts\
+4. start a PS where you can run scripts\
 ```
 powershell.exe -noprofile -executionpolicy bypass
 ```
 
-4. create a virtual environment\
+5. create a virtual environment\
 ```
 py -3 -m venv .venv
 ```
 
-5. activate the virtual environment\
+6. activate the virtual environment\
 ```
 .\.venv\Scripts\Activate.ps1
 ```
 
-6. install the requirements\
+7. install the requirements\
 ```
 pip install -r .\requirements.txt
 ```
 
-7. (optional) install watchdog\
+8. (optional) install watchdog\
 ```
 pip install watchdog
 ```
 
-8. create the ".env" file containing the following (replace with correct values):
+9. create the ".env" file containing the following (replace with correct values):
 ```
 LDAP_BIND_PASSWORD='replace_me'
 ```
 
-9. initiate the DB\
+10. initiate the DB\
 ```
 flask --app HTLens init-db
 ```
 
-10. run the server\
+11. run the server\
 ```
 flask --app HTLens run --debug
 ```
 
-11. run tailwind (in another terminal, in the same directory)\
+12. run tailwind (in another terminal, in the same directory)\
 ```
 .\tailwindcss-windows-x64.exe -i .\tailwind_input.css -o .\HTLens\static\tailwind.css --watch
 ```
