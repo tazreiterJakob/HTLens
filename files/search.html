@@ -19,43 +19,41 @@
     </a>
     <!--NAVBAR START-->
     <div class="navbar fixed bg-base-100 shadow-sm z-50 top-0 left-0 w-full">
-        <div class="navbar-start">
-            <div class="dropdown">
-                <label tabindex="0" class="btn btn-ghost lg:hidden">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M3 5h14a1 1 0 010 2H3a1 1 0 010-2zm0 4h14a1 1 0 010 2H3a1 1 0 010-2zm0 4h14a1 1 0 010 2H3a1 1 0 010-2z" clip-rule="evenodd" />
-                    </svg>
-                </label>
-                <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                    <li><a class="font-bold" href="index.html">Home</a></li>
-                    <li><a href="create.html">Erstellen</a></li>
-                    <li><a>Suche</a></li>
-                    <li><a>Hilfe</a></li>
-                </ul>
-            </div>
-            <a class="btn btn-ghost text-xl">HTLens</a>
-        </div>
-      
-        <div class="navbar-center hidden lg:flex mt-6">
-            <ul class="menu menu-horizontal px-1">
-              <li><a id="home" href="index.html">Home</a></li>
-              <li><a id="create" href="create.html">Erstellen</a></li>
-              <li><a id="search">Suche</a></li>
-              <li><a id="help">Hilfe</a></li>
+    <div class="navbar-start">
+        <div class="dropdown">
+            <label tabindex="0" class="btn btn-ghost lg:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M3 5h14a1 1 0 010 2H3a1 1 0 010-2zm0 4h14a1 1 0 010 2H3a1 1 0 010-2zm0 4h14a1 1 0 010 2H3a1 1 0 010-2z" clip-rule="evenodd" />
+                </svg>
+            </label>
+            <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                <li><a class="font-bold" href="index.html">Home</a></li>
+                <li><a href="create.html">Erstellen</a></li>
+                <li><a href="search.html">Suche</a></li>
             </ul>
         </div>
-      
-        <div class="navbar-end">
-          <a href="#" class="link-hover mr-2">Profil</a>
-          <a href="#" class="btn btn-ghost btn-circle avatar">
-              <div class="w-10 rounded-full"> 
-                  <img
-                      alt="Tailwind CSS Navbar component"
-                      src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-              </div>
-          </a>
-        </div>
-      </div>
+        <a class="btn btn-ghost text-xl" href="index.html">HTLens</a>
+    </div>
+  
+    <div class="navbar-center hidden lg:flex mt-6">
+        <ul class="menu menu-horizontal px-1">
+          <li><a id="home" href="index.html">Home</a></li>
+          <li><a id="create" href="create.html">Erstellen</a></li>
+          <li><a id="search" href="search.html">Suche</a></li>
+        </ul>
+    </div>
+  
+    <div class="navbar-end">
+      <a href="profile.html" class="link-hover mr-2">Profil</a>
+      <a href="profile.html" class="btn btn-ghost btn-circle avatar">
+          <div class="w-10 rounded-full"> 
+              <img id="profilePic"
+                  alt="Tailwind CSS Navbar component"
+                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+          </div>
+      </a>
+    </div>
+  </div>
       <!--NAVBAR END-->
 
       <article class="m-8">
@@ -108,6 +106,7 @@
                     <div>max.</div><input class="input border-black" value="0" min="0" type="number">
                 </ul>
             </div>
+            <button class="btn bg-gray-400 dark:bg-gray-900">suchen</button>
         </div>
       </article>
 

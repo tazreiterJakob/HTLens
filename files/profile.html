@@ -14,43 +14,41 @@
 
     <!--NAVBAR START-->
     <div class="navbar fixed bg-base-100 shadow-sm z-50 top-0 left-0 w-full">
-        <div class="navbar-start">
-            <div class="dropdown">
-                <label tabindex="0" class="btn btn-ghost lg:hidden">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M3 5h14a1 1 0 010 2H3a1 1 0 010-2zm0 4h14a1 1 0 010 2H3a1 1 0 010-2zm0 4h14a1 1 0 010 2H3a1 1 0 010-2z" clip-rule="evenodd" />
-                    </svg>
-                </label>
-                <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                    <li><a class="font-bold" href="index.html">Home</a></li>
-                    <li><a href="create.html">Erstellen</a></li>
-                    <li><a href="search.html">Suche</a></li>
-                    <li><a>Hilfe</a></li>
-                </ul>
-            </div>
-            <a class="btn btn-ghost text-xl">HTLens</a>
-        </div>
-      
-        <div class="navbar-center hidden lg:flex mt-6">
-            <ul class="menu menu-horizontal px-1">
-              <li><a id="home" href="index.html">Home</a></li>
-              <li><a id="create" href="create.html">Erstellen</a></li>
-              <li><a id="search" href="search.html">Suche</a></li>
-              <li><a id="help">Hilfe</a></li>
+    <div class="navbar-start">
+        <div class="dropdown">
+            <label tabindex="0" class="btn btn-ghost lg:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M3 5h14a1 1 0 010 2H3a1 1 0 010-2zm0 4h14a1 1 0 010 2H3a1 1 0 010-2zm0 4h14a1 1 0 010 2H3a1 1 0 010-2z" clip-rule="evenodd" />
+                </svg>
+            </label>
+            <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                <li><a class="font-bold" href="index.html">Home</a></li>
+                <li><a href="create.html">Erstellen</a></li>
+                <li><a href="search.html">Suche</a></li>
             </ul>
         </div>
-      
-        <div class="navbar-end">
-          <a href="profile.html" class="link-hover mr-2">Profil</a>
-          <a href="profile.html" class="btn btn-ghost btn-circle avatar">
-              <div class="w-10 rounded-full"> 
-                  <img
-                      alt="Tailwind CSS Navbar component"
-                      src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-              </div>
-          </a>
-        </div>
-      </div>
+        <a class="btn btn-ghost text-xl" href="index.html">HTLens</a>
+    </div>
+  
+    <div class="navbar-center hidden lg:flex mt-6">
+        <ul class="menu menu-horizontal px-1">
+          <li><a id="home" href="index.html">Home</a></li>
+          <li><a id="create" href="create.html">Erstellen</a></li>
+          <li><a id="search" href="search.html">Suche</a></li>
+        </ul>
+    </div>
+  
+    <div class="navbar-end">
+      <a href="profile.html" class="link-hover mr-2">Profil</a>
+      <a href="profile.html" class="btn btn-ghost btn-circle avatar">
+          <div class="w-10 rounded-full"> 
+              <img id="profilePic"
+                  alt="Tailwind CSS Navbar component"
+                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+          </div>
+      </a>
+    </div>
+  </div>
     <!--NAVBAR END-->
 
     <!--STAT START-->
@@ -121,6 +119,7 @@
         <div class="stat">
           <div class="stat-figure text-secondary">
             <div class="avatar">
+              <a class="link-hover self-center m-2" href="#">Profilbild ändern</a>
               <div class="w-16 rounded-full">
                 <img id="profilePic" src="https://img.daisyui.com/images/profile/demo/anakeen@192.webp" />
               </div>
@@ -137,53 +136,49 @@
         <h1 class="font-bold text-lg">gepostete Beiträge</h1>
 
         <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-4 z-50">
+          <div class="card bg-white shadow-lg text-justify dark:bg-gray-800">
+            <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Bild"/></figure>
+            <div class="card-body">
+              <h2 class="card-title">Karte 1</h2>
+              <p>Das ist eine Beschreibung mit sehr viel Text, um zu testen, ob der Container sich anpasst. Wenn der Text zu lang wird, bleibt alles innerhalb des Kartenbereichs.</p>
+              <div class="card-actions justify-end">
+                <a href="postReview.html"><button class="btn btn-primary">Mehr erfahren</button></a>
+              </div>
+            </div>
+          </div>
 
-            <div class="card bg-white shadow-lg text-justify">
-                <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Bild"/></figure>
-                <div class="card-body">
-                    <h2 class="card-title">Karte 1</h2>
-                    <p>Das ist eine Beschreibung mit sehr viel Text, um zu testen, ob der Container sich anpasst. Wenn der Text zu lang wird, bleibt alles innerhalb des Kartenbereichs.</p>
-                    <div class="card-actions justify-end">
-                        <a href="postReview.html"><button class="btn btn-primary">Mehr erfahren</button></a>
-                    </div>
-                </div>
+          <div class="card bg-white shadow-lg text-justify dark:bg-gray-800">
+            <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Bild"/></figure>
+            <div class="card-body">
+              <h2 class="card-title">Karte 1</h2>
+              <p>Das ist eine Beschreibung mit sehr viel Text, um zu testen, ob der Container sich anpasst. Wenn der Text zu lang wird, bleibt alles innerhalb des Kartenbereichs.</p>
+              <div class="card-actions justify-end">
+                <a href="postReview.html"><button class="btn btn-primary">Mehr erfahren</button></a>
+              </div>
             </div>
-            
-            
-            <div class="card bg-white shadow-lg">
-                <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Bild" /></figure>
-                <div class="card-body">
-                    <h2 class="card-title">Karte 2</h2>
-                    <p>Kurzer Text.</p>
-                    <div class="card-actions justify-end">
-                        <button class="btn btn-primary">Mehr erfahren</button>
-                    </div>
-                </div>
+          </div>
+          
+          <div class="card bg-white shadow-lg text-justify dark:bg-gray-800">
+            <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Bild"/></figure>
+            <div class="card-body">
+              <h2 class="card-title">Karte 1</h2>
+              <p>Das ist eine Beschreibung mit sehr viel Text, um zu testen, ob der Container sich anpasst. Wenn der Text zu lang wird, bleibt alles innerhalb des Kartenbereichs.</p>
+              <div class="card-actions justify-end">
+                <a href="postReview.html"><button class="btn btn-primary">Mehr erfahren</button></a>
+              </div>
             </div>
+          </div>
 
-            
-            <div class="card bg-white shadow-lg">
-                <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Bild" /></figure>
-                <div class="card-body">
-                    <h2 class="card-title">Karte 3</h2>
-                    <p>Hier könnte eine längere Beschreibung stehen, die sich automatisch in den Container einfügt.</p>
-                    <div class="card-actions justify-end">
-                        <button class="btn btn-primary">Mehr erfahren</button>
-                    </div>
-                </div>
+          <div class="card bg-white shadow-lg text-justify dark:bg-gray-800">
+            <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Bild"/></figure>
+            <div class="card-body">
+              <h2 class="card-title">Karte 1</h2>
+              <p>Das ist eine Beschreibung mit sehr viel Text, um zu testen, ob der Container sich anpasst. Wenn der Text zu lang wird, bleibt alles innerhalb des Kartenbereichs.</p>
+              <div class="card-actions justify-end">
+                <a href="postReview.html"><button class="btn btn-primary">Mehr erfahren</button></a>
+              </div>
             </div>
-
-            
-            <div class="card bg-white shadow-lg">
-                <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Bild" /></figure>
-                <div class="card-body">
-                    <h2 class="card-title">Karte 4</h2>
-                    <p>Noch eine Karte mit flexibler Höhe.</p>
-                    <div class="card-actions justify-end">
-                        <button class="btn btn-primary">Mehr erfahren</button>
-                    </div>
-                </div>
-            </div>
+          </div>
         </section>
     </article>
 </body>
