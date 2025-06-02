@@ -1,9 +1,13 @@
 from flask import (
-    Blueprint, flash, g, redirect, render_template, request, url_for
+    Blueprint, flash, g, redirect, render_template, request, url_for, session, current_app
 )
 from werkzeug.exceptions import abort
 
 from HTLens.db import get_db
+
+from PIL import Image
+
+import os
 
 bp = Blueprint('blog', __name__)
 
@@ -23,26 +27,56 @@ def index():
 @bp.route('/create', methods=('GET', 'POST'))
 def create():
     if request.method == 'POST':
+        db = get_db()
+        curser = db.cursor()
+
+        if 'images' not in request.files:
+            flash("Images are required.")
+            return redirect(request.url)
+
         title = request.form['title']
-        body = request.form['body']
-        error = None
+        description = request.form['description']
+        tags = request.form['tags']
+        files = request.files.getlist('images')
 
         if not title:
-            error = 'Title is required.'
+            flash("Titel is required.")
+            return redirect(request.url)
+        
+        curser.execute(
+            'INSERT INTO post (title, description, tags, user_id)'
+            ' VALUES (?, ?, ?, ?)',
+            (title, description, tags, session['uid'])
+        )
+        postId = curser.lastrowid
 
-        if error is not None:
-            flash(error)
-        else:
-            db = get_db()
-            db.execute(
-                'INSERT INTO post (title, body, author_id)'
+
+        for index, file in enumerate(files):
+            filename = str(postId)+'_'+str(index)+'.webp'
+            curser.execute(
+                'INSERT INTO media (post_id, mime_type, filename)'
                 ' VALUES (?, ?, ?)',
-                (title, body, g.user['id'])
+                (postId, "image/webp", filename)
             )
-            db.commit()
-            return redirect(url_for('blog.index'))
 
-    return render_template('blog/create.html')
+            try:
+                # Open image and convert to RGB
+                image = Image.open(file).convert('RGB')
+                save_path = os.path.join(current_app.config['UPLOAD_FOLDER'], filename)
+
+                # Save as WEBP
+                image.save(save_path, format='WEBP')
+            except Exception as e:
+                print(e)
+                flash('Error while saving images.')
+                return redirect(request.url)
+        
+
+        db.commit()
+
+        return redirect(url_for('blog.index'))
+
+    return render_template('blog/create_test.html')
 
 
 def get_post(id, check_author=True):
@@ -108,3 +142,7 @@ def profile():
 @bp.route('/post')
 def post():
     return render_template('blog/post.html')
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in current_app.config('ALLOWED_EXTENSIONS')
