@@ -7,8 +7,19 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
-</head>
-<body  class="bg-gray-100 grid dark:bg-gray-700">
+    <style>
+      #addedImages img, #addedImagesOverview img{
+        width: auto;
+        object-fit: contain;
+        border: 0.1rem solid grey;
+      }
+      #addedImages img:hover{
+        transform: scale(1.05);
+        box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.2);
+      }
+    </style>
+  </head>
+<body  class="bg-gray-100 grid dark:bg-gray-700" onload="clearData()">
 
   <!--NAVBAR START-->
   <div class="navbar fixed bg-base-100 shadow-sm z-50 top-0 left-0 w-full">
@@ -55,10 +66,10 @@
         <hr class="mt-2 mb-2 border-sky-200">
 
         <ul class="steps w-full max-w-full text-base max-sm:text-xs">
-          <li class="step step-primary flex-1">Fotos/Videos</li>
-          <li class="step step-primary flex-1">Titel u. Beschreibung</li>
-          <li class="step step-primary flex-1">Tags</li>
-          <li class="step step-primary flex-1">Übersicht</li>
+          <li class="step step-primary flex-1" id="step-1">Fotos/Videos</li>
+          <li class="step step-primary flex-1" id="step-2">Titel u. Beschreibung</li>
+          <li class="step step-primary flex-1" id="step-3">Tags</li>
+          <li class="step step-primary flex-1" id="step-4">Übersicht</li>
         </ul>
 
         <!--CURRENT TEMPLATE START-->
@@ -66,49 +77,12 @@
 
           <!--ADD IMAGES AND VIDEOS START-->
           <section id="addImagesAndVideos" class="">
-            <h2 class="text-lg font-bold mb-2">Fotos/Videos hinzufügen</h2>
+            <h2 class="text-lg font-bold mb-2">Fotos/Videos hinzufügen (zum Entfernen Klicken)</h2>
             
                       <div id="addedImages" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-            
-                        <div id="img1">
-                          <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
-                          <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
-                        </div>
-                        <div id="img1">
-                          <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
-                          <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
-                        </div>
-                        <div id="img1">
-                          <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
-                          <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
-                        </div>
-                        <div id="img1">
-                          <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
-                          <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
-                        </div>
-                        <div id="img1">
-                          <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
-                          <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
-                        </div>
-                        <div id="img1">
-                          <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
-                          <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
-                        </div>
-                        <div id="img1">
-                          <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
-                          <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
-                        </div>
-                        <div id="img1">
-                          <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
-                          <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
-                        </div>
-                        <div id="img1">
-                          <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
-                          <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
-                        </div>
                         
                       </div>
-                      <input type="file" accept=".png, .jpg, .jpeg, .mp4" class="file-input file-input-primary mt-4"/>
+                      <input type="file" accept=".png, .jpg, .jpeg, .mp4" class="file-input file-input-primary mt-4" id="imageInput" multiple/>
                     </div>
             </section>
             <!--ADD IMAGES AND VIDEOS END-->
@@ -118,10 +92,10 @@
               <h2 class="text-lg font-bold mb-2">Titel u. Beschreibung hinzufügen</h2>
           
               <div class="font-bold mt-8">Titel</div>
-              <input type="text" placeholder="aussagekräftiger Titel" class="input input-info w-1/2" />
+              <input type="text" placeholder="aussagekräftiger Titel" class="input input-info w-1/2" id="titleInput"/>
           
               <div class="font-bold mt-4">Beschreibung (max. 500 Zeichen)</div>
-              <textarea type="text" placeholder="Kurze Beschreibung..." maxlength="500" class="textarea textarea-info w-full min-h-48"></textarea>
+              <textarea id="descriptionInput" type="text" placeholder="Kurze Beschreibung..." maxlength="500" class="textarea textarea-info w-full min-h-48"></textarea>
             </section>
             <!--ADD TITLE AND DESCRIPTION END-->
 
@@ -131,19 +105,18 @@
           
             <div class="dropdown tooltip" data-tip="verpflichtend">
               <div tabindex="0" role="button" class="btn m-1">Schuljahr wählen</div>
-              <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-                <li><a>2025</a></li>
-                <li><a>2024</a></li>
-                <li><a>2023</a></li>
-                <li><a>2022</a></li>
-                <li><a>2021</a></li>
-                <li><a>weitere über backend laden</a></li>
+              <ul tabindex="0" id="yearSelection" class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                <li><a>2024/25</a></li>
+                <li><a>2023/24</a></li>
+                <li><a>2022/23</a></li>
+                <li><a>2021/22</a></li>
+                <li><a>2020/21</a></li>
               </ul>
             </div>
           
             <div class="dropdown tooltip" data-tip="verpflichtend">
               <div tabindex="0" role="button" class="btn m-1">Abteilung wählen</div>
-              <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+              <ul tabindex="0" id="fractionSelection" class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
                 <li><a>IT</a></li>
                 <li><a>WING</a></li>
                 <li><a>AUT</a></li>
@@ -154,44 +127,16 @@
           
             <div class="dropdown tooltip" data-tip="verpflichtend">
               <div tabindex="0" role="button" class="btn m-1">Klasse wählen</div>
-              <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-                <li><a>hier alle Klassen bezogen auf Abteilung</a></li>
-                <!--über backend hinzufügen-->
+              <ul id="classSelection" tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                {Klassen}
               </ul>
             </div>
           
           <div class="font-bold mt-8">Tag eingeben</div>
-          <input type="text" placeholder="z.B. wispowo" class="input input-info w-1/2"/>
-          <button class="btn btn-active btn-primary">hinzufügen</button>
+          <input type="text" placeholder="z.B. wispowo" class="input input-info w-1/2" id="tagInput"/>
+          <button class="btn btn-active btn-primary" onclick="addTag()">hinzufügen</button>
           
           <div id="tagsField" class="mt-4 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3">
-          <a class="badge flex badge-info items-center" onclick="deleteTag()">
-          <img class="h-5" src="images/hashtag.svg"><div class="hover:line-through hover:cursor-pointer">wispowo</div>
-          </a>
-          <a class="badge flex badge-info items-center" onclick="deleteTag()">
-          <img class="h-5" src="images/hashtag.svg"><div class="hover:line-through hover:cursor-pointer">wispowo</div>
-          </a>
-          <a class="badge flex badge-info items-center" onclick="deleteTag()">
-          <img class="h-5" src="images/hashtag.svg"><div class="hover:line-through hover:cursor-pointer">wispowo</div>
-          </a>
-          <a class="badge flex badge-info items-center" onclick="deleteTag()">
-          <img class="h-5" src="images/hashtag.svg"><div class="hover:line-through hover:cursor-pointer">wispowo</div>
-          </a>
-          <a class="badge flex badge-info items-center" onclick="deleteTag()">
-          <img class="h-5" src="images/hashtag.svg"><div class="hover:line-through hover:cursor-pointer">wispowo</div>
-          </a>
-          <a class="badge flex badge-info items-center" onclick="deleteTag()">
-          <img class="h-5" src="images/hashtag.svg"><div class="hover:line-through hover:cursor-pointer">wispowo</div>
-          </a>
-          <a class="badge flex badge-info items-center" onclick="deleteTag()">
-          <img class="h-5" src="images/hashtag.svg"><div class="hover:line-through hover:cursor-pointer">wispowo</div>
-          </a>
-          <a class="badge flex badge-info items-center" onclick="deleteTag()">
-          <img class="h-5" src="images/hashtag.svg"><div class="hover:line-through hover:cursor-pointer">wispowo</div>
-          </a>
-          <a class="badge flex badge-info items-center" onclick="deleteTag()">
-          <img class="h-5" src="images/hashtag.svg"><div class="hover:line-through hover:cursor-pointer">wispowo</div>
-          </a>
           </div>
           </section>    
           <!--ADD TAGS END-->
@@ -202,22 +147,18 @@
           
             <div class="flex justify-between items-center mt-8">
               <div class="font-bold">Titel</div>
-              <a class="link-hover hover:cursor-pointer text-blue-600">bearbeiten</a>
             </div>
             <!--TITLE START-->
-            <div id="title">Lorem ipsum</div>
+            <div id="titleOverview"></div>
             <!--TITLE END
             -->
             <hr class="border-2 mt-4">
           
             <div class="flex justify-between items-center mt-8">
-              <div class="font-bold">Titel</div>
-              <a class="link-hover hover:cursor-pointer text-blue-600">bearbeiten</a>
+              <div class="font-bold">Beschreibung</div>
             </div>
             <!--DESCRIPTION START-->
-            <div id="title" class="text-justify">Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.
-              Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.
-              Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet.
+            <div id="descriptionOverview" class="text-justify">
             </div>
             <!--DESCRIPTION END-->
             <hr class="border-2 mt-4">
@@ -226,37 +167,9 @@
             <!--TAGS START-->
             <div class="flex justify-between items-center mt-8">
               <div class="font-bold">Tags</div>
-              <a class="link-hover hover:cursor-pointer text-blue-600">bearbeiten</a>
             </div>
           
-            <div id="tagsField" class="flex flex-wrap justify-start gap-x-6 gap-y-3 mt-4">
-              <a class="badge flex badge-info items-center" onclick="deleteTag()">
-                <img class="h-5" src="images/hashtag.svg"><div class="hover:line-through hover:cursor-pointer">wispowo</div>
-              </a>
-              <a class="badge flex badge-info items-center" onclick="deleteTag()">
-                <img class="h-5" src="images/hashtag.svg"><div class="hover:line-through hover:cursor-pointer">wispowo</div>
-              </a>
-              <a class="badge flex badge-info items-center" onclick="deleteTag()">
-                <img class="h-5" src="images/hashtag.svg"><div class="hover:line-through hover:cursor-pointer">wispowo</div>
-              </a>
-              <a class="badge flex badge-info items-center" onclick="deleteTag()">
-                <img class="h-5" src="images/hashtag.svg"><div class="hover:line-through hover:cursor-pointer">wispowo</div>
-              </a>
-              <a class="badge flex badge-info items-center" onclick="deleteTag()">
-                <img class="h-5" src="images/hashtag.svg"><div class="hover:line-through hover:cursor-pointer">wispowo</div>
-              </a>
-              <a class="badge flex badge-info items-center" onclick="deleteTag()">
-                <img class="h-5" src="images/hashtag.svg"><div class="hover:line-through hover:cursor-pointer">wispowo</div>
-              </a>
-              <a class="badge flex badge-info items-center" onclick="deleteTag()">
-                <img class="h-5" src="images/hashtag.svg"><div class="hover:line-through hover:cursor-pointer">wispowo</div>
-              </a>
-              <a class="badge flex badge-info items-center" onclick="deleteTag()">
-                <img class="h-5" src="images/hashtag.svg"><div class="hover:line-through hover:cursor-pointer">wispowo</div>
-              </a>
-              <a class="badge flex badge-info items-center" onclick="deleteTag()">
-                <img class="h-5" src="images/hashtag.svg"><div class="hover:line-through hover:cursor-pointer">wispowo</div>
-              </a>
+            <div id="tagsFieldOverview" class="flex flex-wrap justify-start gap-x-6 gap-y-3 mt-4">
             </div>
             <!--TAGS END-->
           
@@ -264,52 +177,10 @@
           
             <!--IMAGES START-->
             <div class="flex justify-between items-center mt-8">
-              <div class="font-bold">Tags</div>
-              <a class="link-hover hover:cursor-pointer text-blue-600">bearbeiten</a>
+              <div class="font-bold">Bilder</div>
             </div>
           
-            <div id="addedImages" class="flex flex-wrap mt-4 justify-evenly">
-          
-              <div id="images">
-                <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
-                <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
-              </div>
-              <div id="img1">
-                <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
-                <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
-              </div>
-              <div id="img1">
-                <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
-                <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
-              </div>
-              <div id="img1">
-                <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
-                <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
-              </div>
-              <div id="img1">
-                <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
-                <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
-              </div>
-              <div id="img1">
-                <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
-                <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
-              </div>
-              <div id="img1">
-                <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
-                <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
-              </div>
-              <div id="img1">
-                <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
-                <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
-              </div>
-              <div id="img1">
-                <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
-                <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
-              </div>
-              <div id="img1">
-                <img src="images/dummyImg_parrot.png" class="h-60  rounded-lg">
-                <button class="link-hover" onclick="deleteImg(dummyImg_parrot)">löschen</button>
-              </div>
+            <div id="addedImagesOverview" class="flex flex-wrap mt-4 justify-evenly">
             </div>
             <!--IMAGES END-->
             <hr class="border-2 mt-4">
@@ -320,10 +191,10 @@
         <!--CURRENT TEMPLATE END-->
           
         <div class="flex justify-between m-4 mt-8">
-          <button class="btn btn-outline">zurück</button>
-          <button class="btn btn-outline btn-primary">weiter</button>
+          <button class="btn btn-outline" onclick="clickReturn()">zurück</button>
+          <button class="btn btn-outline btn-primary" onclick="clickNext()">weiter</button>
         </div>
       </article>
-
+      <script src="create.js"></script>
   </body>
 </html>
