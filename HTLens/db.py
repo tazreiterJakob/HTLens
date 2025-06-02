@@ -4,6 +4,8 @@ from datetime import datetime
 import click
 from flask import current_app, g
 
+import os
+
 
 def get_db():
     if 'db' not in g:
@@ -28,6 +30,9 @@ def init_db():
 
     with current_app.open_resource('schema.sql') as f:
         db.executescript(f.read().decode('utf8'))
+    
+    os.makedirs(current_app.config['UPLOAD_FOLDER'], exist_ok=True)
+    os.makedirs(current_app.config['PROFILEPICS_FOLDER'], exist_ok=True)
 
 
 @click.command('init-db')

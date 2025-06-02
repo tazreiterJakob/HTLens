@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Neuer Post{% endblock %}
+
+{% block content %}
+
+<body class="bg-gray-100 grid dark:bg-gray-700">
+
+  {% include 'navbar.html' %}
+
+  
+  <form method="post" class="m-100" enctype="multipart/form-data">
+    <input name="title" type="text" placeholder="TITEL">
+    <input name="description" type="text" placeholder="beschr">
+    <input name="tags" type="text" placeholder="hash">
+    <input type="file" name="images" multiple>
+    <button type="submit">hehe</button>
+  </form>
+
+</body>
+{% endblock %}
