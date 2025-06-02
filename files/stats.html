@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Statistiken</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" />
+</head>
+<body class="m-2">
+    <h1 class="text-4xl font-bold mb-8 ml-4">Statistiken</h1>
+
+    <div class="stats shadow bg-gray-100 dark:bg-gray-800 flex flex-col sm:flex-row sm:flex-wrap md:flex-nowrap overflow-x-hidden stats shadow m-8">
+        <div class="stat">
+        <div class="stat-figure text-primary">
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            class="inline-block h-8 w-8 stroke-current"
+            >
+            <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+            ></path>
+        </svg>
+        </div>
+    <div class="stat-title">Likes insgesamt</div>
+    <div id="totalLikes" class="stat-value text-primary">25.6K</div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-figure text-secondary">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        class="inline-block h-8 w-8 stroke-current"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M13 10V3L4 14h7v7l9-11h-7z"
+        ></path>
+      </svg>
+    </div>
+    <div class="stat-title">Beiträge insgesamt</div>
+    <div id="totalPosts" class="stat-value text-primary">402</div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-title">Kommentare insgesamt</div>
+    <div id="totalComments" class="stat-value">505</div>
+  </div>
+</div>
+
+<!--TOP STUDENTS START-->
+<ul class="list bg-gray-100 dark:bg-gray-800 rounded-box shadow-md p-2">
+  
+  <details class="dropdown">
+        <summary class="btn m-1 justify-self-center">Top Schüler mit meisten Beiträge</summary>
+        <ul class="menu dropdown-content bg-base-100 rounded-box z-[999] w-52 p-2 shadow-sm">
+            <li><a>der letzten 7 Tage</a></li>
+            <li><a>insgesamt</a></li>
+        </ul>
+    </details>
+  
+  <li class="list-row">
+    <div class="text-4xl font-thin opacity-30 tabular-nums">01</div>
+    <div><img id="userProfilePic" class="size-10 rounded-box" src="https://img.daisyui.com/images/profile/demo/1@94.webp"/></div>
+    <div class="list-col-grow">
+        <div id="username" class="text-lg">user98294</div>
+        <div id="amountPosts" class="uppercase font-semibold opacity-60">124 Beiträge</div>
+    </div>
+  </li>
+  
+  <hr class="dark:border-gray-400 mt-2">
+
+  <li class="list-row">
+    <div class="text-4xl font-thin opacity-30 tabular-nums">02</div>
+    <div><img id="userProfilePic" class="size-10 rounded-box" src="https://img.daisyui.com/images/profile/demo/1@94.webp"/></div>
+    <div class="list-col-grow">
+      <div id="username" class="text-lg">waltherT</div>
+      <div id="amountPosts" class="uppercase font-semibold opacity-60">98 Beiträge</div>
+    </div>
+  </li>
+
+  <hr class="dark:border-gray-400 mt-2">
+
+  <li class="list-row">
+    <div class="text-4xl font-thin opacity-30 tabular-nums">03</div>
+    <div><img id="userProfilePic" class="size-10 rounded-box" src="https://img.daisyui.com/images/profile/demo/1@94.webp"/></div>
+    <div class="list-col-grow">
+      <div id="username" class="text-lg">bananaSplitSplitter</div>
+      <div id="amountPosts" class="uppercase font-semibold opacity-60">96 Beiträge</div>
+    </div>
+  </li>
+</ul>
+<!--TOP STUDENTS END-->
+</body>
+</html>
