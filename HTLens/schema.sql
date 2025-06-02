@@ -10,7 +10,7 @@ CREATE TABLE user (
   type TEXT NOT NULL,
   accessLevel INTEGER NOT NULL, -- 0 none, 1 read only, 2 can post, 3 social media manager, 4 admin
   klasse TEXT,
-  profilePic TEXT
+  profilePicFilename TEXT
 );
 
 CREATE TABLE post (
@@ -21,6 +21,7 @@ CREATE TABLE post (
   title TEXT NOT NULL,
   description TEXT,
   tags TEXT,
+  publiched BIT NOT NULL DEFAULT 0, -- 0 NOT published on social media, 1 published on social media
   FOREIGN KEY (user_id) REFERENCES user (uid) ON DELETE CASCADE
 );
 
@@ -28,7 +29,7 @@ CREATE TABLE like (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   post_id INTEGER NOT NULL,
   user_id TEXT NOT NULL,
-  FOREIGN KEY (post_id) REFERENCES post (id) ON DELETE CASCADE
+  FOREIGN KEY (post_id) REFERENCES post (id) ON DELETE CASCADE,
   FOREIGN KEY (user_id) REFERENCES user (uid) ON DELETE CASCADE
 );
 
@@ -37,7 +38,6 @@ CREATE TABLE comment (
   post_id INTEGER NOT NULL,
   user_id TEXT NOT NULL,
   created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  modified TIMESTAMP DEFAULT NULL,
   text TEXT NOT NULL,
   FOREIGN KEY (post_id) REFERENCES post (id) ON DELETE CASCADE,
   FOREIGN KEY (user_id) REFERENCES user (uid) ON DELETE CASCADE
