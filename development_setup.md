@@ -12,7 +12,7 @@ git clone https://github.com/tazreiterJakob/HTLens.git
 cd .\HTLens
 ```
 
-3. download tailwind CLI and place it inside the repo
+3. download tailwind CLI and place it inside the repo (SHA256: c9117f6f8d9d9f8bf06f4575c505519f0484577d65c96f14b3c2fa61248bf11e)
 ```
 https://github.com/tailwindlabs/tailwindcss/releases/latest
 ```
