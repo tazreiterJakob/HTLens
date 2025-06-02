@@ -1,17 +1,89 @@
 let index = 0;
-
+let idArray = ["addImagesAndVideos", "addTitleAndDescription", "addTags", "overview"];
+const input = document.getElementById("imageInput");
+const preview = document.getElementById("addedImages");
 const style = document.createElement("style");
 document.head.appendChild(style);
 resetProgressBar();
 
-let idArray = ["addImagesAndVideos", "addTitleAndDescription", "addTags", "overview"];
+let yearSelection = null;
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const dropdownItems = document.querySelectorAll('#yearSelection li a');
+
+    dropdownItems.forEach(item => {
+      item.addEventListener('click', (event) => {
+        const selectedText = event.target.textContent.trim();
+        document.getElementById("tagsField").innerHTML += '<a class="badge flex badge-info items-center"><img class="h-5" src="images/hashtag.svg"><div class="hover:cursor-pointer">' + selectedText + '</div></a>'
+        yearSelection = selectedText;
+    });
+    });
+  });
+
+let fractionSelection = null;
+  document.addEventListener('DOMContentLoaded', () => {
+    const dropdownItems = document.querySelectorAll('#fractionSelection li a');
+
+    dropdownItems.forEach(item => {
+      item.addEventListener('click', (event) => {
+        const selectedText = event.target.textContent.trim();
+        document.getElementById("tagsField").innerHTML += '<a class="badge flex badge-info items-center"><img class="h-5" src="images/hashtag.svg"><div class="hover:cursor-pointer">' + selectedText + '</div></a>'
+        fractionSelection = selectedText;
+      });
+    });
+  });
+
+  let classSelection = null;
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const dropdownItems = document.querySelectorAll('#classSelection li a');
+
+    dropdownItems.forEach(item => {
+      item.addEventListener('click', (event) => {
+        const selectedText = event.target.textContent.trim();
+            document.getElementById("tagsField").innerHTML += '<a class="badge flex badge-info items-center"><img class="h-5" src="images/hashtag.svg"><div class="hover:cursor-pointer">' + selectedText + '</div></a>'
+
+            classSelection = selectedText;
+      });
+    });
+  });
+
+input.addEventListener('change', () => {
+    preview.innerHTML = '';
+
+    Array.from(input.files).forEach(file => {
+      if (!file.type.startsWith('image/')) return;
+
+      const reader = new FileReader();
+      reader.onload = e => {
+        const img = document.createElement('img');
+        img.src = e.target.result;
+        img.className = "h-60";
+        img.addEventListener('click', () => {
+          preview.removeChild(img);
+          if(preview.innerHTML == ""){
+            input.innerHTML = "";
+            input.value = "";
+          }
+        });
+        preview.appendChild(img);
+      };
+      reader.readAsDataURL(file);
+    });
+});
 
 function clickNext(){
     if(index == 3) return;
     if(index == 0 && checkIfFileInputIsBlank()) return;
     if(index == 1 && checkIfTitleInputIsBlank()) return;
+    if(index == 2){
+        if(yearSelection == null || classSelection == null || fractionSelection == null) {
+            alert("Achtung! Es müssen Schuljahr, Abteilung und Klassen angegeben werden!");
+            return;
+        }
+    }
     if(index == 2) fillOverviewElementsWithValue();
-        
+    
     index++;
     showNewTemplate();
 }
@@ -19,7 +91,7 @@ function clickNext(){
 //#region casesForClickNext
 function checkIfFileInputIsBlank(){
     if(document.getElementById("imageInput").value == "") {
-        alert("You have to add an image! Accepted file endings: .png, .jpg, .jpeg, .mp4")
+        alert("Sie müssen ein Bild hinzufügen! Akzeptierte Dateiformate: .png, .jpg, .jpeg, .mp4")
         return true;
     }
     return false;
@@ -27,7 +99,7 @@ function checkIfFileInputIsBlank(){
 
 function checkIfTitleInputIsBlank(){
     if(isNullOrWhitespace(document.getElementById("titleInput").value)){
-        alert("Title can't be empty!");
+        alert("Titel kann nicht leer sein!");
         return true;
     }
     return false;
@@ -37,6 +109,8 @@ function checkIfTitleInputIsBlank(){
 function fillOverviewElementsWithValue(){
     document.getElementById("titleOverview").innerHTML = document.getElementById("titleInput").value;
     document.getElementById("descriptionOverview").innerHTML = document.getElementById("descriptionInput").value;
+    document.getElementById("addedImagesOverview").innerHTML = document.getElementById("addedImages").innerHTML;
+    document.getElementById("tagsFieldOverview").innerHTML = document.getElementById("tagsField").innerHTML;
 }
 
 function isNullOrWhitespace( input ) {
@@ -87,4 +161,14 @@ function clearData(){
     document.getElementById("descriptionInput").value = "";
     document.getElementById("imageInput").value = "";
     document.getElementById("tagInput").value = "";
+}
+
+function addTag(){
+    let text = document.getElementById("tagInput").value;
+    document.getElementById("tagsField").innerHTML += '<a class="badge flex badge-info items-center" onclick="deleteTag(event)"><img class="h-5" src="images/hashtag.svg"><div class="hover:line-through hover:cursor-pointer">' + text + '</div></a>'
+    document.getElementById("tagInput").value = "";
+}
+
+function deleteTag(event){
+    event.currentTarget.remove();
 }
