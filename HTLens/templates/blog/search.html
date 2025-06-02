@@ -1,62 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beiträge suchen</title>
+{% extends 'base.html' %}
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
-    <script type="module" src="https://unpkg.com/cally"></script>
-</head>
+{% block title %}Suche{% endblock %}
+
+{% block content %}
+
 <body class="bg-gray-100 dark:bg-gray-700">
+    <script type="module" src="https://unpkg.com/cally"></script>
     <a id="topPos" class="block pt-20"></a>
     <a class="fixed box right-2 bottom-2 z-40" href="#topPos">
         <button>
-            <img class="w-10 rounded-lg" src="images/upArrow.png">
+            <img class="w-10 rounded-lg" src="{{ url_for('static', filename='images/upArrow.png') }}">
         </button>
     </a>
-    <!--NAVBAR START-->
-    <div class="navbar fixed bg-base-100 shadow-sm z-50 top-0 left-0 w-full">
-    <div class="navbar-start">
-        <div class="dropdown">
-            <label tabindex="0" class="btn btn-ghost lg:hidden">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M3 5h14a1 1 0 010 2H3a1 1 0 010-2zm0 4h14a1 1 0 010 2H3a1 1 0 010-2zm0 4h14a1 1 0 010 2H3a1 1 0 010-2z" clip-rule="evenodd" />
-                </svg>
-            </label>
-            <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                <li><a class="font-bold" href="index.html">Home</a></li>
-                <li><a href="create.html">Erstellen</a></li>
-                <li><a href="search.html">Suche</a></li>
-            </ul>
-        </div>
-        <a class="btn btn-ghost text-xl" href="index.html">HTLens</a>
-    </div>
-  
-    <div class="navbar-center hidden lg:flex mt-6">
-        <ul class="menu menu-horizontal px-1">
-          <li><a id="home" href="index.html">Home</a></li>
-          <li><a id="create" href="create.html">Erstellen</a></li>
-          <li><a id="search" href="search.html">Suche</a></li>
-        </ul>
-    </div>
-  
-    <div class="navbar-end">
-      <a href="profile.html" class="link-hover mr-2">Profil</a>
-      <a href="profile.html" class="btn btn-ghost btn-circle avatar">
-          <div class="w-10 rounded-full"> 
-              <img id="profilePic"
-                  alt="Tailwind CSS Navbar component"
-                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-          </div>
-      </a>
-    </div>
-  </div>
-      <!--NAVBAR END-->
 
-      <article class="m-8">
+    {% include 'navbar.html' %}
+
+    <article class="m-8">
         <h1 class="font-bold text-lg">Filter</h1>
 
         <div class="flex gap-2 flex-wrap justify-start">
@@ -65,7 +24,8 @@
                 <div tabindex="0" role="button" class="btn bg-white dark:bg-gray-800">Abteilung</div>
                 <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-50 w-60 p-2 shadow-sm">
                     <input type="search" class="input mb-2 border-black" placeholder="Abteilung suchen, z.B. IT">
-                    <li><a>über backend alle Abteilungen alphabetisch laden, außer es wird konkrete Abteilung gesucht</a></li>
+                    <li><a>über backend alle Abteilungen alphabetisch laden, außer es wird konkrete Abteilung
+                            gesucht</a></li>
                 </ul>
             </div>
             <div id="classSearch" class="dropdown">
@@ -86,10 +46,16 @@
                 <div tabindex="0" role="button" class="btn bg-white dark:bg-gray-800">veröffentlicht am</div>
                 <ul tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-50 w-70 p-2 shadow-sm">
                     <calendar-date class="cally bg-base-100 border border-base-300 shadow-lg rounded-box">
-                        <svg aria-label="Previous" class="fill-current size-4" slot="previous" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M15.75 19.5 8.25 12l7.5-7.5"></path></svg>
-                        <svg aria-label="Next" class="fill-current size-4" slot="next" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="m8.25 4.5 7.5 7.5-7.5 7.5"></path></svg>
+                        <svg aria-label="Previous" class="fill-current size-4" slot="previous"
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M15.75 19.5 8.25 12l7.5-7.5"></path>
+                        </svg>
+                        <svg aria-label="Next" class="fill-current size-4" slot="next"
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="m8.25 4.5 7.5 7.5-7.5 7.5"></path>
+                        </svg>
                         <calendar-month></calendar-month>
-                      </calendar-date>
+                    </calendar-date>
                 </ul>
             </div>
             <div id="tagsSearch" class="dropdown">
@@ -106,31 +72,34 @@
                     <div>max.</div><input class="input border-black" value="0" min="0" type="number">
                 </ul>
             </div>
-            <button class="btn bg-gray-400 dark:bg-gray-900">suchen</button>
         </div>
-      </article>
+    </article>
 
-      <article class="m-8">
+    <article class="m-8">
         <div class="flex flex-row font-bold ">
-            <div class="mr-1 text-lg">Ergebnisse</div><div id="resultsAmount" class="self-center text-sm">(732)</div>
-        </div>  
+            <div class="mr-1 text-lg">Ergebnisse</div>
+            <div id="resultsAmount" class="self-center text-sm">(732)</div>
+        </div>
 
         <section id="searchResults" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-4">
 
             <div class="card bg-white shadow-lg text-justify dark:bg-gray-800">
-                <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Bild"/></figure>
+                <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                        alt="Bild" /></figure>
                 <div class="card-body">
                     <h2 class="card-title">Karte 1</h2>
-                    <p>Das ist eine Beschreibung mit sehr viel Text, um zu testen, ob der Container sich anpasst. Wenn der Text zu lang wird, bleibt alles innerhalb des Kartenbereichs.</p>
+                    <p>Das ist eine Beschreibung mit sehr viel Text, um zu testen, ob der Container sich anpasst. Wenn
+                        der Text zu lang wird, bleibt alles innerhalb des Kartenbereichs.</p>
                     <div class="card-actions justify-end">
                         <a href="postReview.html"><button class="btn btn-primary">Mehr erfahren</button></a>
                     </div>
                 </div>
             </div>
-            
-            
+
+
             <div class="card bg-white shadow-lg text-justify dark:bg-gray-800">
-                <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Bild" /></figure>
+                <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                        alt="Bild" /></figure>
                 <div class="card-body">
                     <h2 class="card-title">Karte 2</h2>
                     <p>Kurzer Text.</p>
@@ -140,9 +109,10 @@
                 </div>
             </div>
 
-            
+
             <div class="card bg-white shadow-lg text-justify dark:bg-gray-800">
-                <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Bild" /></figure>
+                <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                        alt="Bild" /></figure>
                 <div class="card-body">
                     <h2 class="card-title">Karte 3</h2>
                     <p>Hier könnte eine längere Beschreibung stehen, die sich automatisch in den Container einfügt.</p>
@@ -152,9 +122,10 @@
                 </div>
             </div>
 
-            
+
             <div class="card bg-white shadow-lg text-justify dark:bg-gray-800">
-                <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Bild" /></figure>
+                <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                        alt="Bild" /></figure>
                 <div class="card-body">
                     <h2 class="card-title">Karte 4</h2>
                     <p>Noch eine Karte mit flexibler Höhe.</p>
@@ -164,6 +135,8 @@
                 </div>
             </div>
         </section>
-      </article>
+    </article>
+
+    {% include 'footer.html' %}
 </body>
-</html>
+{% endblock %}
