@@ -12,6 +12,11 @@ git clone https://github.com/tazreiterJakob/HTLens.git
 cd .\HTLens
 ```
 
+2. download tailwind CLI and place it inside the repo
+```
+https://github.com/tailwindlabs/tailwindcss/releases/latest
+```
+
 3. start a PS where you can run scripts\
 ```
 powershell.exe -noprofile -executionpolicy bypass
@@ -52,6 +57,11 @@ flask --app HTLens init-db
 flask --app HTLens run --debug
 ```
 
+11. run tailwind (in another terminal, in the same directory)\
+```
+.\tailwindcss-windows-x64.exe -i .\tailwind_input.css -o .\HTLens\static\tailwind.css --watch
+```
+
 
 ## start existing setup
 
@@ -73,4 +83,9 @@ powershell.exe -noprofile -executionpolicy bypass
 4. run the server\
 ```
 flask --app HTLens run --debug
+```
+
+5. run tailwind (in another terminal, in the same directory)\
+```
+.\tailwindcss-windows-x64.exe -i .\tailwind_input.css -o .\HTLens\static\tailwind.css --watch
 ```

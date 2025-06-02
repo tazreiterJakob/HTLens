@@ -1,3 +1,7 @@
+_gitignore/
+
+tailwindcss-windows-x64.exe
+
 .venv/
 
 .env

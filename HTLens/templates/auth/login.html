@@ -1,15 +1,44 @@
 {% extends 'base.html' %}
 
-{% block header %}
-  <h1>{% block title %}Log In{% endblock %}</h1>
-{% endblock %}
+{% block title %}Login{% endblock %}
 
 {% block content %}
-  <form method="post">
-    <label for="username">Username</label>
-    <input name="username" id="username" required>
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" required>
-    <input type="submit" value="Log In">
-  </form>
+<body class="h-full">
+  <div class="flex flex-col md:flex-row h-full">
+  
+    <div class="hidden md:flex bg-[#48BFDD] md:w-1/2 h-full justify-center p-8">
+      <div class="text-white text-center font-bold text-2xl max-w-md self-end">
+        Eine einheitliche Plattform<br />
+        für bessere Übersicht<br/>
+        über Social-Media-Content.
+      </div>
+    </div>
+
+    <div class="md:w-1/2 w-full h-1/2 md:h-full flex flex-col justify-between items-center p-8 gap-4">
+        <div class="flex flex-col">
+            <a href="https://www.htlwy.at/" class="self-center"><img src="{{ url_for('static', filename='images/logo_HTLens.svg') }}" class="h-16 mb-4"></a>
+            <h1 class="text-2xl font-semibold mb-8">Willkommen zurück!</h1>
+
+            <div class="flex flex-col gap-3">
+              <fieldset class="fieldset">
+                <legend class="fieldset-legend">Benutzername:</legend>
+                <input type="text" class="input border-black" placeholder="Benutzer eingeben..." />
+              </fieldset>
+              <fieldset class="fieldset">
+                <legend class="fieldset-legend">Passwort:</legend>
+                <input type="password" class="input border-black" placeholder="Passwort eingeben..." />
+              </fieldset>
+              <button class="btn bg-primary text-white">
+                  Einloggen
+              </button>
+            </div>
+        </div>
+        
+        <div class="hidden md:flex md:justify-self-end">
+            <div>zurück zur HTL-Seite?</div><a class="link-hover ml-1 hover:cursor-pointer" href="https://www.htlwy.at/">hier klicken</a>
+        </div>
+      </div>
+      
+  </div>
+</body>
 {% endblock %}
