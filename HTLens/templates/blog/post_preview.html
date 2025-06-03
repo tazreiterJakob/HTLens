@@ -1,0 +1,10 @@
+<div class="card bg-white shadow-lg text-justify dark:bg-gray-800">
+  <figure><img src="{{ url_for('media.download_media', id=preview.imagePath) }}" alt="Bild" /></figure>
+  <div class="card-body">
+    <h2 class="card-title">{{ preview.title }}</h2>
+    <p>{{ preview.description }}</p>
+    <div class="card-actions justify-end">
+      <a href="{{ url_for('blog.post', id=preview.id) }}"><button class="btn btn-primary">Mehr erfahren</button></a>
+    </div>
+  </div>
+</div>

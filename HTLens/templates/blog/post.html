@@ -55,7 +55,7 @@
                         <div class="collapse-content text-sm">
 
                             <div class="h-60 overflow-y-scroll p-2">
-                                
+
                                 {% for comment in comments %}
                                 <div class="chat chat-end">
                                     <div class="chat-image avatar">
@@ -71,9 +71,10 @@
                                     <div class="chat-bubble">{{ comment['text'] }}</div>
                                 </div>
                                 {% endfor %}
-                                
+
                             </div>
-                            <form class="flex mt-2" action="{{ url_for('blog.comment', id = post['id']) }}" method="post">
+                            <form class="flex mt-2" action="{{ url_for('blog.comment', id = post['id']) }}"
+                                method="post">
                                 <input type="text" name="text" placeholder="Kommentar eingeben..."
                                     class="input input-primary w-full" />
                                 <button class="btn ml-2">senden</button>
@@ -86,26 +87,33 @@
                         <div class="flex items-center">
                             <div class="avatar mr-2">
                                 <div class="w-10 h-10 rounded-full">
-                                    <img
-                                        src="{{ url_for('media.download_profile_pic', uid = post['user_id']) }}" />
+                                    <img src="{{ url_for('media.download_profile_pic', uid = post['user_id']) }}" />
                                 </div>
                             </div>
-                            <a href="#"
-                                class="hover:underline text-sm font-medium text-gray-700 dark:text-gray-400">{{ posterDisplayName }}</a>
+                            <a href="#" class="hover:underline text-sm font-medium text-gray-700 dark:text-gray-400">{{
+                                posterDisplayName }}</a>
                         </div>
 
                         <div class="flex items-center gap-2">
                             <div id="likesCount" class="text-sm text-gray-600 dark:text-gray-400">{{ likesCount }}</div>
                             {% if not isLiked %}
-                            <form action="{{ url_for('blog.like', id=post['id']) }}" method="post"><button type="submit"><img class="h-6 w-6" src="{{ url_for('static', filename='images/heart_empty.svg') }}" alt="Like"></button></form>
+                            <form action="{{ url_for('blog.like', id=post['id']) }}" method="post"><button
+                                    type="submit"><img class="h-6 w-6"
+                                        src="{{ url_for('static', filename='images/heart_empty.svg') }}"
+                                        alt="Like"></button></form>
                             {% else %}
-                            <form action="{{ url_for('blog.unlike', id=post['id']) }}" method="post"><button type="submit"><img class="h-6 w-6" src="{{ url_for('static', filename='images/heart_full.svg') }}" alt="Like"></button></form>
+                            <form action="{{ url_for('blog.unlike', id=post['id']) }}" method="post"><button
+                                    type="submit"><img class="h-6 w-6"
+                                        src="{{ url_for('static', filename='images/heart_full.svg') }}"
+                                        alt="Like"></button></form>
                             {% endif %}
                         </div>
                     </div>
                 </div>
         </section>
     </article>
+
+    <div class="h-100"></div>
 
     <!-- MODAL + FULLSCREEN CAROUSEL -->
     <input type="checkbox" id="fullscreen-carousel-modal" class="modal-toggle" />
@@ -133,8 +141,6 @@
 
         </div>
     </div>
-
-    {% include 'footer.html' %}
 
 </body>
 {% endblock %}

@@ -14,14 +14,33 @@ bp = Blueprint('blog', __name__)
 
 @bp.route('/')
 def index():
-    #db = get_db()
-    #posts = db.execute(
-    #    'SELECT p.id, title, body, created, author_id, username'
-    #    ' FROM post p JOIN user u ON p.author_id = u.id'
-    #    ' ORDER BY created DESC'
-    #).fetchall()
-    #return render_template('blog/index.html', posts=posts)
-    return render_template('blog/index.html')
+    db = get_db()
+    previews = db.execute(
+        'SELECT p.id AS id, p.title, p.description, '
+        '(SELECT m.id FROM media m WHERE m.post_id = p.id ORDER BY m.id ASC LIMIT 1) AS imagePath ' \
+        'FROM post p ORDER BY p.created DESC LIMIT 25;'
+    ).fetchall()
+    return render_template('blog/index.html', previews=previews)
+
+@bp.route('/search', methods=('GET', 'POST'))
+def search():
+    db = get_db()
+    if request.method == 'GET':
+        previews = db.execute(
+            'SELECT p.id AS id, p.title, p.description, '
+            '(SELECT m.id FROM media m WHERE m.post_id = p.id ORDER BY m.id ASC LIMIT 1) AS imagePath ' \
+            'FROM post p ORDER BY p.created DESC LIMIT 25;'
+        ).fetchall()
+    elif request.method == 'POST':
+        filter = request.form['filter']
+        filter = f"%{filter}%"
+        previews = db.execute(
+            'SELECT p.id AS id, p.title, p.description, p.tags, '
+            '(SELECT m.id FROM media m WHERE m.post_id = p.id ORDER BY m.id ASC LIMIT 1) AS imagePath ' \
+            'FROM post p WHERE p.title LIKE ? OR p.description LIKE ? OR p.tags LIKE ? ORDER BY p.created DESC;', (filter, filter, filter,)
+        ).fetchall()
+        print(previews)
+    return render_template('blog/search.html', previews=previews)
 
 
 @bp.route('/create', methods=('GET', 'POST'))
@@ -87,7 +106,7 @@ def post(id):
     if post is None:
         abort(404, f"Post id {id} doesn't exist.")
 
-    tags = str(post['tags']).split('.')
+    tags = str(post['tags']).split(';')
     likesCount = len(likes)
     isLiked = len(db.execute('SELECT * FROM like WHERE post_id = ? AND user_id = ?', (id, session['uid'],)).fetchall()) > 0
 
@@ -164,10 +183,6 @@ def delete(id):
     db.execute('DELETE FROM post WHERE id = ?', (id,))
     db.commit()
     return redirect(url_for('blog.index'))
-
-@bp.route('/search')
-def search():
-    return render_template('blog/search.html')
 
 @bp.route('/profile')
 def profile():

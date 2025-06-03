@@ -21,7 +21,17 @@ def create_app(test_config=None):
         LDAP_BIND_PASSWORD=os.getenv('LDAP_BIND_PASSWORD'),
         LDAP_BASE_DN = 'dc=schule,dc=local',
         LDAP_USER_FILTER = '(uid={})',
-        KLASSEN = ['1ahit', '2ahit', '3ahit', '4ahit']
+        KLASSEN = [
+            '1ahet', '2ahet', '3ahet', '4ahet', '5ahet',
+            '1ahmba', '1bhmba', '2ahmba', '2bhmba', '3ahmba', '3bhmba',
+            '4ahmba', '4bhmba', '5ahmba', '5bhmba',
+            '1ahwim', '1bhwim', '2ahwim', '2bhwim', '3ahwim', '3bhwim',
+            '4ahwim', '4bhwim', '5ahwim', '5bhwim',
+            '1ahit', '2ahit', '3ahit', '4ahit', '5ahit',
+            '1afme', '2afme', '3afme', '4afme',
+            '1aame/2akme', '2aame/2akme', '3aame/3akme',
+            '4aame/4akme', '5aame/5akme', '6aame/6akme'
+        ]
     )
 
     if test_config is None:

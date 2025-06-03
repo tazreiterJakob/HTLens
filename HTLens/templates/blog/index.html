@@ -18,68 +18,15 @@
     <article class="m-8 m-8">
         <h1 class="text-4xl font-bold mb-8 ml-4">Startseite</h1>
 
-        <details class="dropdown z-60">
-            <summary class="text-lg font-bold ml-4 btn m-1">Das könnte dir gefallen</summary>
-            <ul class="menu dropdown-content bg-base-100 rounded-box z-10 w-52 p-2 shadow-sm ml-4">
-                <li><a>Das könnte dir gefallen</a></li>
-                <li><a>Neueste Beiträge</a></li>
-            </ul>
-        </details>
-
         <section id="postSection" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-4 z-50">
 
-            <div class="card bg-white shadow-lg text-justify dark:bg-gray-800">
-                <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                        alt="Bild" /></figure>
-                <div class="card-body">
-                    <h2 class="card-title">Karte 1</h2>
-                    <p>Das ist eine Beschreibung mit sehr viel Text, um zu testen, ob der Container sich anpasst. Wenn
-                        der Text zu lang wird, bleibt alles innerhalb des Kartenbereichs.</p>
-                    <div class="card-actions justify-end">
-                        <a href="postReview.html"><button class="btn btn-primary">Mehr erfahren</button></a>
-                    </div>
-                </div>
-            </div>
+            {% for preview in previews %}
+            {% include 'blog/post_preview.html' %}
+            {% endfor %}
 
-
-            <div class="card bg-white shadow-lg text-justify dark:bg-gray-800">
-                <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                        alt="Bild" /></figure>
-                <div class="card-body">
-                    <h2 class="card-title">Karte 2</h2>
-                    <p>Kurzer Text.</p>
-                    <div class="card-actions justify-end">
-                        <button class="btn btn-primary">Mehr erfahren</button>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="card bg-white shadow-lg text-justify dark:bg-gray-800">
-                <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                        alt="Bild" /></figure>
-                <div class="card-body">
-                    <h2 class="card-title">Karte 3</h2>
-                    <p>Hier könnte eine längere Beschreibung stehen, die sich automatisch in den Container einfügt.</p>
-                    <div class="card-actions justify-end">
-                        <button class="btn btn-primary">Mehr erfahren</button>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="card bg-white shadow-lg text-justify dark:bg-gray-800">
-                <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                        alt="Bild" /></figure>
-                <div class="card-body">
-                    <h2 class="card-title">Karte 4</h2>
-                    <p>Noch eine Karte mit flexibler Höhe.</p>
-                    <div class="card-actions justify-end">
-                        <button class="btn btn-primary">Mehr erfahren</button>
-                    </div>
-                </div>
-            </div>
         </section>
+
+        <h2>nicht gefunden? Versuch's mit der Suche!</h2>
     </article>
 
     {% include 'footer.html' %}
