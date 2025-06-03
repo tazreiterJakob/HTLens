@@ -73,7 +73,11 @@ input.addEventListener('change', () => {
 });
 
 function clickNext(){
-    if(index == 3) return;
+    if(index == 3) 
+    {
+      sendData();
+        return;
+    }
     if(index == 0 && checkIfFileInputIsBlank()) return;
     if(index == 1 && checkIfTitleInputIsBlank()) return;
     if(index == 2){
@@ -171,4 +175,65 @@ function addTag(){
 
 function deleteTag(event){
     event.currentTarget.remove();
+}
+
+function sendData(){
+ // Create the form element
+const form = document.createElement('form');
+form.method = 'post';
+form.className = 'm-100';
+form.action = "/create";
+form.enctype = 'multipart/form-data';
+
+// Create input for title
+const titleInput = document.createElement('input');
+titleInput.value = document.getElementById('titleInput');
+titleInput.name = 'title';
+titleInput.type = 'text';
+titleInput.placeholder = 'TITEL';
+form.appendChild(titleInput);
+
+// Create input for description
+const descriptionInput = document.createElement('input');
+descriptionInput.value = document.getElementById('descriptionInput');
+descriptionInput.name = 'description';
+descriptionInput.type = 'text';
+descriptionInput.placeholder = 'beschr';
+form.appendChild(descriptionInput);
+
+// Create input for tags
+const tagsInput = document.createElement('input');
+let tags = document.getElementById("tagsField").innerHTML;
+let split = tags.split('>');
+let splitsplit = [];
+for(let i = 0; i < split.length; i++){
+  splitsplit.push(split[i].split('<'));
+}
+let tagsArray = [];
+for(let i = 0; i < splitsplit.length; i++){
+  if(i == 3 ||i % 5 == 3){
+    tagsArray.push(splitsplit[i][0])
+  }
+}
+let s = "";
+for(let i = 0; i < tagsArray.length; i++){
+  if(i != tagsArray.length-1) s = s + tagsArray[i] + ";";
+  else s = s + tagsArray[i];
+}
+tagsInput.value = s;
+tagsInput.name = 'tags';
+tagsInput.type = 'text';
+tagsInput.placeholder = 'hash';
+form.appendChild(tagsInput);
+
+// Create file input
+const fileInput = document.createElement('input');
+fileInput.value = document.getElementById('imageInput').value;
+console.log(fileInput.value);
+fileInput.type = 'file';
+fileInput.name = 'images';
+fileInput.multiple = true;
+submitButton.type = 'submit';
+const submitButton = document.createElement('button');
+submitButton.click();
 }
