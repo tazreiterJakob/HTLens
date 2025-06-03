@@ -3,7 +3,7 @@ from flask import (
 )
 from werkzeug.exceptions import abort
 
-from HTLens.db import get_db
+from HTLens.db import get_db, get_post, get_user
 
 from PIL import Image
 
@@ -79,26 +79,61 @@ def create():
     return render_template('blog/create_test.html')
 
 
-def get_post(id, check_author=True):
-    post = get_db().execute(
-        'SELECT p.id, title, body, created, author_id, username'
-        ' FROM post p JOIN user u ON p.author_id = u.id'
-        ' WHERE p.id = ?',
-        (id,)
-    ).fetchone()
+@bp.route('/post/<int:id>', methods=('GET',))
+def post(id):
+    db = get_db()
+    post, media, comments, likes = get_post(id)
 
     if post is None:
         abort(404, f"Post id {id} doesn't exist.")
 
-    if check_author and post['author_id'] != g.user['id']:
-        abort(403)
+    tags = str(post['tags']).split('.')
+    likesCount = len(likes)
+    isLiked = len(db.execute('SELECT * FROM like WHERE post_id = ? AND user_id = ?', (id, session['uid'],)).fetchall()) > 0
 
-    return post
+    posterDisplayName = get_user(post['user_id'])['displayName']
+    commentDisplayName = {}
+    for comment in comments:
+        commentDisplayName[comment['user_id']] = get_user(comment['user_id'])['displayName']
+    
+    return render_template("blog/post.html", media=media, post=post, comments=comments, likes=likes, tags=tags, likesCount=likesCount, isLiked=isLiked, posterDisplayName=posterDisplayName, commentDisplayName=commentDisplayName)
+
+@bp.route('/like/<int:id>', methods=('POST',))
+def like(id):
+    db = get_db()
+    if session['accessLevel'] >= 2 and len(db.execute('SELECT * FROM like WHERE post_id = ? AND user_id = ?', (id, session['uid'],)).fetchall()) < 1:
+        db.execute('INSERT INTO like (post_id, user_id) VALUES (?, ?)', (id, session['uid']))
+        db.commit()
+    
+    return(redirect(url_for('blog.post', id=id)))
+
+@bp.route('/unlike/<int:id>', methods=('POST',))
+def unlike(id):
+    db = get_db()
+    if session['accessLevel'] >= 2 and len(db.execute('SELECT * FROM like WHERE post_id = ? AND user_id = ?', (id, session['uid'],)).fetchall()) > 0:
+        db.execute('DELETE FROM like WHERE post_id = ? AND user_id = ?', (id, session['uid']))
+        db.commit()
+    
+    return(redirect(url_for('blog.post', id=id)))
+
+@bp.route('/comment/<int:id>', methods=('POST',))
+def comment(id):
+    db = get_db()
+    if session['accessLevel'] >= 2 and request.form['text']:
+        db.execute('INSERT INTO comment (post_id, user_id, text) VALUES (?, ?, ?)', (id, session['uid'], request.form['text']))
+        db.commit()
+    
+    return(redirect(url_for('blog.post', id=id)))
+
+
 
 
 @bp.route('/<int:id>/update', methods=('GET', 'POST'))
 def update(id):
     post = get_post(id)
+    
+    if post is None:
+        abort(404, f"Post id {id} doesn't exist.")
 
     if request.method == 'POST':
         title = request.form['title']
@@ -125,7 +160,6 @@ def update(id):
 
 @bp.route('/<int:id>/delete', methods=('POST',))
 def delete(id):
-    get_post(id)
     db = get_db()
     db.execute('DELETE FROM post WHERE id = ?', (id,))
     db.commit()
@@ -138,10 +172,6 @@ def search():
 @bp.route('/profile')
 def profile():
     return render_template('blog/profile.html')
-
-@bp.route('/post')
-def post():
-    return render_template('blog/post.html')
 
 def allowed_file(filename):
     return '.' in filename and \

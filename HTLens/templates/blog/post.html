@@ -6,110 +6,43 @@
 
 <body class="bg-gray-100 dark:bg-gray-700 grid justify-center">
 
-    <!--NAVBAR START-->
-    <div class="navbar fixed bg-base-100 shadow-sm z-50 top-0 left-0 w-full">
-        <div class="navbar-start">
-            <div class="dropdown">
-                <label tabindex="0" class="btn btn-ghost lg:hidden">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd"
-                            d="M3 5h14a1 1 0 010 2H3a1 1 0 010-2zm0 4h14a1 1 0 010 2H3a1 1 0 010-2zm0 4h14a1 1 0 010 2H3a1 1 0 010-2z"
-                            clip-rule="evenodd" />
-                    </svg>
-                </label>
-                <ul tabindex="0"
-                    class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                    <li><a class="font-bold" href="index.html">Home</a></li>
-                    <li><a href="create.html">Erstellen</a></li>
-                    <li><a>Suche</a></li>
-                    <li><a>Hilfe</a></li>
-                </ul>
-            </div>
-            <a class="btn btn-ghost text-xl">HTLens</a>
-        </div>
-
-        <div class="navbar-center hidden lg:flex mt-6">
-            <ul class="menu menu-horizontal px-1">
-                <li><a class="font-bold" href="index.html">Home</a></li>
-                <li><a href="create.html">Erstellen</a></li>
-                <li><a>Suche</a></li>
-                <li><a>Hilfe</a></li>
-            </ul>
-        </div>
-
-        <div class="navbar-end">
-            <a href="#" class="link-hover mr-2">Profil</a>
-            <a href="#" class="btn btn-ghost btn-circle avatar">
-                <div class="w-10 rounded-full">
-                    <img alt="Tailwind CSS Navbar component"
-                        src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-                </div>
-            </a>
-        </div>
-    </div>
-    <!--NAVBAR END-->
+    {% include 'navbar.html' %}
 
     <article id="currentPost" class="mt-10 pt-20 flex justify-center rounded-xl px-4">
         <a class="btn link link-primary mr-4 self-start dark:bg-gray-500 dark:border-gray-500 dark:hover:bg-gray-100 dark:hover:border-gray-100"
-            href="index.html">
-            <img class="h-6 w-7" src="images/left-arrow.svg" alt="Zurück">
+            href="{{ url_for('blog.index') }}">
+            <img class="h-6 w-7" src="{{ url_for('static', filename='images/left-arrow.svg') }}" alt="Zurück">
         </a>
 
         <section
             class="card bg-white dark:bg-gray-800 shadow-lg text-justify flex flex-col lg:flex-row max-w-6xl w-full p-4 items-start">
             <figure class="w-full lg:w-1/2 relative rounded-xl">
-                <img class="rounded-xl" src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                    alt="Bild">
+                <img class="rounded-xl" src="{{ url_for('media.download_media', id = media[0]['id']) }}" alt="Bild">
                 <label for="fullscreen-carousel-modal"
                     class="btn absolute bottom-2 right-2 cursor-pointer dark:bg-gray-500 dark:border-gray-500 dark:hover:bg-gray-100 dark:hover:border-gray-100">
-                    <img class="h-5" src="images/resize.svg" />
+                    <img class="h-5" src="{{ url_for('static', filename='images/resize.svg') }}" />
                 </label>
             </figure>
 
             <div class="w-full lg:w-1/2 p-4 flex flex-col">
-                <h2 id="postName" class="card-title">[Beitragsname]</h2>
+                <h2 id="postName" class="card-title">{{ post['title'] }}</h2>
                 <p id="postDescription" class="mb-4">
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy.
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                    {{ post['description'] }}
                 </p>
 
                 <h2 class="font-bold">Tags</h2>
                 <div id="tags" class="flex flex-row flex-wrap gap-2 mt-2 mb-4">
+                    {% for tag in tags %}
                     <div class="badge flex badge-info items-center">
-                        <img class="h-5" src="images/hashtag.svg">
-                        wispowo
+                        <img class="h-5" src="{{ url_for('static', filename='images/hashtag.svg') }}">
+                        {{ tag }}
                     </div>
-                    <div class="badge badge-info flex items-center">
-                        <img class="h-5" src="images/hashtag.svg">
-                        schule
-                    </div>
-                    <div class="badge badge-info flex items-center">
-                        <img class="h-5" src="images/hashtag.svg">
-                        sport
-                    </div>
-                    <div class="badge badge-info flex items-center">
-                        <img class="h-5" src="images/hashtag.svg">
-                        fun
-                    </div>
-                    <div class="badge badge-info flex items-center">
-                        <img class="h-5" src="images/hashtag.svg">
-                        auszeit
-                    </div>
-                    <div class="badge badge-info flex items-center">
-                        <img class="h-5" src="images/hashtag.svg">
-                        ski
-                    </div>
-                    <div class="badge badge-info flex items-center">
-                        <img class="h-5" src="images/hashtag.svg">
-                        snowboard
-                    </div>
+                    {% endfor %}
                 </div>
 
                 <div class="mb-4">
                     <h2 class="font-bold">veröffentlicht am</h2>
-                    <div>10.04.2025</div>
+                    <div>{{ post['created'] }}</div>
                 </div>
 
                 <div class="flex-grow"></div>
@@ -122,81 +55,29 @@
                         <div class="collapse-content text-sm">
 
                             <div class="h-60 overflow-y-scroll p-2">
-                                <div class="chat chat-start snap">
-                                    <div class="chat-image avatar">
-                                        <div class="w-10 rounded-full">
-                                            <img alt="Tailwind CSS chat bubble component"
-                                                src="https://img.daisyui.com/images/profile/demo/kenobee@192.webp" />
-                                        </div>
-                                    </div>
-                                    <div class="chat-header">
-                                        Obi-Wan Kenobi
-                                        <time class="text-xs opacity-50">12:45</time>
-                                    </div>
-                                    <div class="chat-bubble">You were the Chosen One!</div>
-                                </div>
-
+                                
+                                {% for comment in comments %}
                                 <div class="chat chat-end">
                                     <div class="chat-image avatar">
                                         <div class="w-10 rounded-full">
                                             <img alt="Tailwind CSS chat bubble component"
-                                                src="https://img.daisyui.com/images/profile/demo/anakeen@192.webp" />
+                                                src="{{ url_for('media.download_profile_pic', uid = comment['user_id']) }}" />
                                         </div>
                                     </div>
                                     <div class="chat-header">
-                                        Anakin
-                                        <time class="text-xs opacity-50">12:46</time>
+                                        {{ commentDisplayName[comment['user_id']] }}
+                                        <time class="text-xs opacity-50">{{ comment['created'] }}</time>
                                     </div>
-                                    <div class="chat-bubble">I hate you!</div>
+                                    <div class="chat-bubble">{{ comment['text'] }}</div>
                                 </div>
-
-                                <div class="chat chat-end">
-                                    <div class="chat-image avatar">
-                                        <div class="w-10 rounded-full">
-                                            <img alt="Tailwind CSS chat bubble component"
-                                                src="https://img.daisyui.com/images/profile/demo/anakeen@192.webp" />
-                                        </div>
-                                    </div>
-                                    <div class="chat-header">
-                                        Anakin
-                                        <time class="text-xs opacity-50">12:46</time>
-                                    </div>
-                                    <div class="chat-bubble">Lorem ipsum dolor sit amet, lorem ipsum dolor sit amet,
-                                        lorem ipsum dolor sit amet.</div>
-                                </div>
-
-                                <div class="chat chat-end">
-                                    <div class="chat-image avatar">
-                                        <div class="w-10 rounded-full">
-                                            <img alt="Tailwind CSS chat bubble component"
-                                                src="https://img.daisyui.com/images/profile/demo/anakeen@192.webp" />
-                                        </div>
-                                    </div>
-                                    <div class="chat-header">
-                                        Anakin
-                                        <time class="text-xs opacity-50">12:46</time>
-                                    </div>
-                                    <div class="chat-bubble">I hate you!</div>
-                                </div>
-                                <div class="chat chat-end">
-                                    <div class="chat-image avatar">
-                                        <div class="w-10 rounded-full">
-                                            <img alt="Tailwind CSS chat bubble component"
-                                                src="https://img.daisyui.com/images/profile/demo/anakeen@192.webp" />
-                                        </div>
-                                    </div>
-                                    <div class="chat-header">
-                                        Anakin
-                                        <time class="text-xs opacity-50">12:46</time>
-                                    </div>
-                                    <div class="chat-bubble">I hate you!</div>
-                                </div>
+                                {% endfor %}
+                                
                             </div>
-                            <div class="flex mt-2">
-                                <input type="text" placeholder="Kommentar eingeben..."
+                            <form class="flex mt-2" action="{{ url_for('blog.comment', id = post['id']) }}" method="post">
+                                <input type="text" name="text" placeholder="Kommentar eingeben..."
                                     class="input input-primary w-full" />
                                 <button class="btn ml-2">senden</button>
-                            </div>
+                            </form>
                         </div>
                     </div>
                     <!--KOMMENTARE ENDE-->
@@ -206,116 +87,26 @@
                             <div class="avatar mr-2">
                                 <div class="w-10 h-10 rounded-full">
                                     <img
-                                        src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                                        src="{{ url_for('media.download_profile_pic', uid = post['user_id']) }}" />
                                 </div>
                             </div>
                             <a href="#"
-                                class="hover:underline text-sm font-medium text-gray-700 dark:text-gray-400">user82240</a>
+                                class="hover:underline text-sm font-medium text-gray-700 dark:text-gray-400">{{ posterDisplayName }}</a>
                         </div>
 
                         <div class="flex items-center gap-2">
-                            <div id="likesCount" class="text-sm text-gray-600 dark:text-gray-400">5.4k</div>
-                            <button><img class="h-6 w-6" src="images/heart_empty.svg" alt="Like"></button>
+                            <div id="likesCount" class="text-sm text-gray-600 dark:text-gray-400">{{ likesCount }}</div>
+                            {% if not isLiked %}
+                            <form action="{{ url_for('blog.like', id=post['id']) }}" method="post"><button type="submit"><img class="h-6 w-6" src="{{ url_for('static', filename='images/heart_empty.svg') }}" alt="Like"></button></form>
+                            {% else %}
+                            <form action="{{ url_for('blog.unlike', id=post['id']) }}" method="post"><button type="submit"><img class="h-6 w-6" src="{{ url_for('static', filename='images/heart_full.svg') }}" alt="Like"></button></form>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
         </section>
     </article>
 
-    <h2 class="ml-4 text-lg font-bold mt-8">ähnliche Beiträge</h2>
-
-    <article id="similiarPosts" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 p-4 z-10">
-        <div class="card bg-white shadow-lg text-justify dark:bg-gray-800">
-            <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Bild" />
-            </figure>
-            <div class="card-body">
-                <h2 class="card-title">Karte 1</h2>
-                <p>Das ist eine Beschreibung mit sehr viel Text, um zu testen, ob der Container sich anpasst. Wenn der
-                    Text zu lang wird, bleibt alles innerhalb des Kartenbereichs.</p>
-                <div class="card-actions justify-end">
-                    <a href="postReview.html"><button class="btn btn-primary">Mehr erfahren</button></a>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="card bg-white shadow-lg text-justify dark:bg-gray-800">
-            <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Bild" />
-            </figure>
-            <div class="card-body">
-                <h2 class="card-title">Karte 2</h2>
-                <p>Kurzer Text.</p>
-                <div class="card-actions justify-end">
-                    <button class="btn btn-primary">Mehr erfahren</button>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="card bg-white shadow-lg text-justify dark:bg-gray-800">
-            <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Bild" />
-            </figure>
-            <div class="card-body">
-                <h2 class="card-title">Karte 3</h2>
-                <p>Hier könnte eine längere Beschreibung stehen, die sich automatisch in den Container einfügt.</p>
-                <div class="card-actions justify-end">
-                    <button class="btn btn-primary">Mehr erfahren</button>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="card bg-white shadow-lg text-justify dark:bg-gray-800">
-            <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Bild" />
-            </figure>
-            <div class="card-body">
-                <h2 class="card-title">Karte 4</h2>
-                <p>Noch eine Karte mit flexibler Höhe.</p>
-                <div class="card-actions justify-end">
-                    <button class="btn btn-primary">Mehr erfahren</button>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="card bg-white shadow-lg text-justify dark:bg-gray-800">
-            <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Bild" />
-            </figure>
-            <div class="card-body">
-                <h2 class="card-title">Karte 5</h2>
-                <p>Kurzer Text.</p>
-                <div class="card-actions justify-end">
-                    <button class="btn btn-primary">Mehr erfahren</button>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="card bg-white shadow-lg text-justify dark:bg-gray-800">
-            <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Bild" />
-            </figure>
-            <div class="card-body">
-                <h2 class="card-title">Karte 6</h2>
-                <p>Hier könnte eine längere Beschreibung stehen, die sich automatisch in den Container einfügt.</p>
-                <div class="card-actions justify-end">
-                    <button class="btn btn-primary">Mehr erfahren</button>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="card bg-white shadow-lg text-justify dark:bg-gray-800">
-            <figure><img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Bild" />
-            </figure>
-            <div class="card-body">
-                <h2 class="card-title">Karte 7</h2>
-                <p>Noch eine Karte mit flexibler Höhe.</p>
-                <div class="card-actions justify-end">
-                    <button class="btn btn-primary">Mehr erfahren</button>
-                </div>
-            </div>
-        </div>
-    </article>
     <!-- MODAL + FULLSCREEN CAROUSEL -->
     <input type="checkbox" id="fullscreen-carousel-modal" class="modal-toggle" />
     <div class="modal modal-bottom sm:modal-middle bg-black bg-opacity-70 backdrop-blur-sm">
@@ -324,41 +115,26 @@
             <label for="fullscreen-carousel-modal" class="btn btn-sm btn-circle absolute right-4 top-4 z-50">✕</label>
 
             <div class="carousel w-full h-[80vh]">
-                <div id="modal-slide1" class="carousel-item relative w-full">
-                    <video controls class="w-full object-contain h-full">
-                        <source src="lebron.mp4">
-                    </video>
-                    <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#modal-slide4" class="btn btn-circle">❮</a>
-                        <a href="#modal-slide2" class="btn btn-circle">❯</a>
-                    </div>
-                </div>
-                <div id="modal-slide2" class="carousel-item relative w-full">
-                    <img src="https://img.daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.webp"
+                {% for item in media %}
+                {% set index = loop.index0 %}
+                {% set prev_index = loop.index0 - 1 if not loop.first else media|length - 1 %}
+                {% set next_index = loop.index0 + 1 if not loop.last else 0 %}
+
+                <div id="modal-slide{{ index }}" class="carousel-item relative w-full">
+                    <img src="{{ url_for('media.download_media', id=item['id']) }}"
                         class="w-full object-contain h-full" />
                     <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#modal-slide1" class="btn btn-circle">❮</a>
-                        <a href="#modal-slide3" class="btn btn-circle">❯</a>
+                        <a href="#modal-slide{{ prev_index }}" class="btn btn-circle">❮</a>
+                        <a href="#modal-slide{{ next_index }}" class="btn btn-circle">❯</a>
                     </div>
                 </div>
-                <div id="modal-slide3" class="carousel-item relative w-full">
-                    <img src="https://img.daisyui.com/images/stock/photo-1414694762283-acccc27bca85.webp"
-                        class="w-full object-contain h-full" />
-                    <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#modal-slide2" class="btn btn-circle">❮</a>
-                        <a href="#modal-slide4" class="btn btn-circle">❯</a>
-                    </div>
-                </div>
-                <div id="modal-slide4" class="carousel-item relative w-full">
-                    <img src="https://img.daisyui.com/images/stock/photo-1665553365602-b2fb8e5d1707.webp"
-                        class="w-full object-contain h-full" />
-                    <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#modal-slide3" class="btn btn-circle">❮</a>
-                        <a href="#modal-slide1" class="btn btn-circle">❯</a>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
+
         </div>
     </div>
+
+    {% include 'footer.html' %}
+
 </body>
 {% endblock %}

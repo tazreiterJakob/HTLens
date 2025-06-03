@@ -9,8 +9,9 @@ CREATE TABLE user (
   displayName TEXT NOT NULL,
   type TEXT NOT NULL,
   accessLevel INTEGER NOT NULL, -- 0 none, 1 read only, 2 can post, 3 social media manager, 4 admin
-  klasse TEXT,
-  profilePicFilename TEXT
+  klasse TEXT DEFAULT NULL,
+  abteilung TEXT DEFAULT NULL,
+  profilePicFilename TEXT DEFAULT NULL
 );
 
 CREATE TABLE post (
