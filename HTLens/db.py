@@ -6,6 +6,24 @@ from flask import current_app, g
 
 import os
 
+def get_post(id):
+    db = get_db()
+
+    post = db.execute('SELECT * FROM post WHERE id = ?', (id,)).fetchone()
+
+    media = db.execute('SELECT * FROM media WHERE post_id = ?', (id,)).fetchall()
+    comments = db.execute('SELECT * FROM comment WHERE post_id = ?', (id,)).fetchall()
+    likes = db.execute('SELECT * FROM like WHERE post_id = ?', (id,)).fetchall()
+
+    return post, media, comments, likes
+
+def get_user(uid):
+    db = get_db()
+
+    user = db.execute('SELECT * FROM user WHERE uid = ?', (uid,)).fetchone()
+
+    return user
+
 
 def get_db():
     if 'db' not in g:
