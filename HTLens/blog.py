@@ -95,7 +95,7 @@ def create():
 
         return redirect(url_for('blog.index'))
 
-    return render_template('blog/create_test.html')
+    return render_template('blog/create.html')
 
 
 @bp.route('/post/<int:id>', methods=('GET',))
