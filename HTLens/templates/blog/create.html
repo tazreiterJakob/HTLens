@@ -12,195 +12,46 @@
       object-fit: contain;
       border: 0.1rem solid grey;
     }
-
-    #addedImages img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
-    }
   </style>
 
   <!--NAVBAR START-->
-
+{% include 'navbar.html' %}
   <!--NAVBAR END-->
-  <div class="h-16 mb-3"></div>
+  <div class="pt-20 min-h-screen flex items-center justify-center mt-8">
 
-  <article class="card bg-base-100 shadow-lg mt-7 mb-3 p-2 justify-self-center grid m:flex  md:w-1/2">
-    <h1 class="card-title text-2xl justify-self-center font-bold">Beitrag erstellen</h1>
-    <hr class="mt-2 mb-2 border-sky-200">
+    <article class="card bg-base-100 shadow-lg p-6 w-full md:w-1/2 p-8">
+      <h1 class="card-title text-2xl justify-self-center font-bold">Beitrag erstellen</h1>
+      <hr class="mt-2 mb-2 border-sky-200">
 
-    <ul class="steps w-full max-w-full text-base max-sm:text-xs">
-      <li class="step step-primary flex-1" id="step-1">Fotos/Videos</li>
-      <li class="step step-primary flex-1" id="step-2">Titel u. Beschreibung</li>
-      <li class="step step-primary flex-1" id="step-3">Tags</li>
-      <li class="step step-primary flex-1" id="step-4">Übersicht</li>
-    </ul>
-
-    <!--CURRENT TEMPLATE START-->
-    <div id="currentTemplate" class="mt-8">
-
-      <!--ADD IMAGES AND VIDEOS START-->
-      <section id="addImagesAndVideos" class="">
-        <h2 class="text-lg font-bold mb-2">Fotos/Videos hinzufügen (zum Entfernen Klicken)</h2>
-
-        <div id="addedImages" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-
+      <form method="post" enctype="multipart/form-data">
+        <div class="flex justify-between items-center mt-8">
+          <div class="font-bold">Titel</div>
         </div>
-        <input type="file" accept=".png, .jpg, .jpeg, .mp4" class="file-input file-input-primary mt-4" id="imageInput"
-          multiple />
-    </div>
-    </section>
-    <!--ADD IMAGES AND VIDEOS END-->
-
-    <!--ADD TITLE AND DESCRIPTION START-->
-    <section id="addTitleAndDescription" class="hidden">
-      <h2 class="text-lg font-bold mb-2">Titel u. Beschreibung hinzufügen</h2>
-
-      <div class="font-bold mt-8">Titel</div>
-      <input type="text" placeholder="aussagekräftiger Titel" class="input input-info w-1/2" id="titleInput" />
-
-      <div class="font-bold mt-4">Beschreibung (max. 500 Zeichen)</div>
-      <textarea id="descriptionInput" type="text" placeholder="Kurze Beschreibung..." maxlength="500"
-        class="textarea textarea-info w-full min-h-48"></textarea>
-    </section>
-    <!--ADD TITLE AND DESCRIPTION END-->
-
-    <!--ADD TAGS START-->
-    <section id="addTags" class="hidden">
-      <h2 class="text-lg font-bold mb-2">Tags hinzufügen</h2>
-
-      <div class="dropdown tooltip" data-tip="verpflichtend">
-        <div tabindex="0" role="button" class="btn m-1">Schuljahr wählen</div>
-        <ul tabindex="0" id="yearSelection"
-          class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-          <li><a>2024/25</a></li>
-          <li><a>2023/24</a></li>
-          <li><a>2022/23</a></li>
-          <li><a>2021/22</a></li>
-          <li><a>2020/21</a></li>
-        </ul>
-      </div>
-
-      <div class="dropdown tooltip" data-tip="verpflichtend">
-        <div tabindex="0" role="button" class="btn m-1">Abteilung wählen</div>
-        <ul tabindex="0" id="fractionSelection"
-          class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-          <li><a>IT</a></li>
-          <li><a>WING</a></li>
-          <li><a>AUT</a></li>
-          <li><a>ETEC</a></li>
-          <li><a>AFME</a></li>
-        </ul>
-      </div>
-
-      <div class="dropdown tooltip" data-tip="verpflichtend">
-        <div tabindex="0" role="button" class="btn m-1">Klasse wählen</div>
-        <ul id="classSelection" tabindex="0"
-          class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-          <li><a>1AHET</a></li>
-          <li><a>1AHIT</a></li>
-          <li><a>2AHIT</a></li>
-          <li><a>3AHIT</a></li>
-          <li><a>4AHIT</a></li>
-          <li><a>5AHIT</a></li>
-          <li><a>2AHET</a></li>
-          <li><a>3AHET</a></li>
-          <li><a>4AHET</a></li>
-          <li><a>5AHET</a></li>
-          <li><a>1AHMBA</a></li>
-          <li><a>1BHMBA</a></li>
-          <li><a>2AHMBA</a></li>
-          <li><a>2BHMBA</a></li>
-          <li><a>3AHMBA</a></li>
-          <li><a>3BHMBA</a></li>
-          <li><a>4AHMBA</a></li>
-          <li><a>4BHMBA</a></li>
-          <li><a>5AHMBA</a></li>
-          <li><a>5BHMBA</a></li>
-          <li><a>1AHWIM</a></li>
-          <li><a>1BHWIM</a></li>
-          <li><a>2AHWIM</a></li>
-          <li><a>2BHWIM</a></li>
-          <li><a>3AHWIM</a></li>
-          <li><a>3BHWIM</a></li>
-          <li><a>4AHWIM</a></li>
-          <li><a>4BHWIM</a></li>
-          <li><a>5AHWIM</a></li>
-          <li><a>5BHWIM</a></li>
-          <li><a>1AFME</a></li>
-          <li><a>2AFME</a></li>
-          <li><a>3AFME</a></li>
-          <li><a>4AFME</a></li>
-          <li><a>1AAME/2AKME</a></li>
-          <li><a>2AAME/2AKME</a></li>
-          <li><a>3AAME/3AKME</a></li>
-          <li><a>4AAME/4AKME</a></li>
-          <li><a>5AAME/5AKME</a></li>
-        </ul>
-      </div>
-
-      <div class="font-bold mt-8">Tag eingeben</div>
-      <input type="text" placeholder="z.B. wispowo" class="input input-info w-1/2" id="tagInput" />
-      <button class="btn btn-active btn-primary" onclick="addTag()">hinzufügen</button>
-
-      <div id="tagsField" class="mt-4 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3">
-      </div>
-    </section>
-    <!--ADD TAGS END-->
-
-    <!--OVERVIEW START-->
-    <section id="overview" class="hidden">
-      <h2 class="text-lg font-bold mb-2">Übersicht</h2>
-
-      <div class="flex justify-between items-center mt-8">
-        <div class="font-bold">Titel</div>
-      </div>
-      <!--TITLE START-->
-      <div id="titleOverview"></div>
-      <!--TITLE END
-            -->
-      <hr class="border-2 mt-4">
-
-      <div class="flex justify-between items-center mt-8">
-        <div class="font-bold">Beschreibung</div>
-      </div>
-      <!--DESCRIPTION START-->
-      <div id="descriptionOverview" class="text-justify">
-      </div>
-      <!--DESCRIPTION END-->
-      <hr class="border-2 mt-4">
-
-
-      <!--TAGS START-->
-      <div class="flex justify-between items-center mt-8">
-        <div class="font-bold">Tags</div>
-      </div>
-
-      <div id="tagsFieldOverview" class="flex flex-wrap justify-start gap-x-6 gap-y-3 mt-4">
-      </div>
-      <!--TAGS END-->
-
-      <hr class="border-2 mt-4">
-
-      <!--IMAGES START-->
-      <div class="flex justify-between items-center mt-8">
-        <div class="font-bold">Bilder</div>
-      </div>
-
-      <div id="addedImagesOverview" class="flex flex-wrap mt-4 justify-evenly">
-      </div>
-      <!--IMAGES END-->
-      <hr class="border-2 mt-4">
-    </section>
-    <!--OVERVIEW END-->
-
-    </div>
-    <!--CURRENT TEMPLATE END-->
-
-    <div class="flex justify-between m-4 mt-8">
-      <button class="btn btn-outline" onclick="clickReturn()">zurück</button>
-      <button class="btn btn-outline btn-primary" onclick="clickNext()">weiter</button>
-    </div>
-  </article>
-  <script src="{{ url_for('static', filename='create.js') }}"></script>
+        <input id="titleInput" name="title" class="input input-info w-1/2" type="text" placeholder="aussagekräftiger Titel"></input>
+        <hr class="border-2 mt-4">
+        <div class="flex justify-between items-center mt-8">
+          <div class="font-bold">Beschreibung</div>
+        </div>
+        <textarea name="description" type="text" id="descriptionInput" placeholder="Kurze Beschreibung..." maxlength="500" class="textarea textarea-info w-full min-h-48 text-justify"></textarea>
+        <hr class="border-2 mt-4">
+        <div class="flex justify-between items-center mt-8">
+          <div class="font-bold">Tags</div>
+        </div>
+        <input name="tags" type="text" id="tagInput" class="input input-info w-1/2" placeholder="Tag1;Tag2;Tag3"></input>
+        <hr class="border-2 mt-4">
+        <div class="flex justify-between items-center mt-8">
+          <div class="font-bold">Bilder</div>
+        </div>
+        <input name="images" accept=".png, .jpg, .jpeg, .mp4" multiple type="file" id="imageInput" class="mb-2 flex flex-wrap mt-4 justify-evenly grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 file-input file-input-primary"></input>
+        <div id="addedImages" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"></div>
+        <hr class="border-2 mt-4">
+        <div class="flex justify-between m-4 mt-8">
+          <button class="btn btn-outline btn-primary" type="" onclick="checkIfInputIsBlank()">Posten</button>
+        </div>
+        <button type="submit" id="submit_button" class="hidden"></button>
+      </form>
+    </article>
+    <script src="{{url_for('static', filename='create.js') }}"></script>
+  </div>
 </body>
 {% endblock %}
