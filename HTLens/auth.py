@@ -55,8 +55,10 @@ def login():
         ensureUserExists(uid, displayName, memberOf)
         user = getUser(uid)
         for key in user.keys():
-            print(key)
             session[key] = user[key]
+        if (session['accessLevel'] < 1):
+            session = None
+            redirect(url_for('auth.login'))
         return redirect(url_for('index'))
 
     return render_template('auth/login.html')
@@ -92,7 +94,7 @@ def ensureUserExists(uid, displayName, memberOf):
 
 @bp.before_app_request
 def ensure_login():
-    if session.get('uid'):
+    if (session.get('uid') and (session.get('accessLevel') > 0)):
         return
 
     if not (request.path == url_for('auth.login') or request.path.startswith("/static/")):
