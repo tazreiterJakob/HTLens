@@ -57,7 +57,7 @@ def login():
         for key in user.keys():
             session[key] = user[key]
         if (session['accessLevel'] < 1):
-            session = None
+            session.clear()
             redirect(url_for('auth.login'))
         return redirect(url_for('index'))
 
